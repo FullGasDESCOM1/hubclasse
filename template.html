@@ -191,6 +191,9 @@ a:hover > .circle, button:hover > .circle, .circle:hover{transform:rotate(45deg)
 .dlist .dli b{font-size:14px;display:block}
 .dlist .dli span{font-size:12px;color:#8c8c8c}
 .dlist .dli .when{margin-left:auto;font-size:13px;font-weight:700;color:var(--red-2);white-space:nowrap}
+.calsub{display:flex;align-items:center;gap:10px;margin-top:10px;padding:12px 16px;border-radius:var(--r-l);background:var(--dark-2);font-size:13px;font-weight:600;color:#fff}
+.calsub svg{width:18px;height:18px}
+.calsub:hover{background:var(--red)}
 .nowbar{position:absolute;left:-4px;right:-4px;height:2px;background:var(--red);z-index:3}
 .nowbar::before{content:"";position:absolute;left:-4px;top:-4px;width:10px;height:10px;border-radius:50%;background:var(--red)}
 .list .row{display:flex;gap:14px;align-items:center;padding:12px 4px;border-top:1px solid var(--line)}
@@ -427,6 +430,7 @@ footer{margin-top:28px;display:flex;justify-content:space-between;gap:12px;flex-
         <div class="c-head"><h3>Oggi</h3><p id="todayDate"></p></div>
         <div id="todayList"></div>
         <div class="deadline" id="deadline"></div>
+        <a class="calsub" href="webcal://fullgasdescom1.github.io/hubclasse/consegne.ics"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M12 13v5M9.5 15.5h5"/></svg>Metti le consegne nel tuo calendario</a>
       </section>
 
       <section class="card sp3">

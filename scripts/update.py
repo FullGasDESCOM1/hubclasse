@@ -6,7 +6,7 @@ Fonti:
 Se una fonte non risponde, restano i dati dell'ultima versione di data.json.
 Solo libreria standard di Python: niente da installare.
 """
-import json, os, re, shutil, sys, urllib.request
+import hashlib, json, os, re, shutil, sys, urllib.request
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -126,6 +126,33 @@ def from_notion(data, token):
     if f:
         data["faq"] = [{"q": r["Domanda"], "a": r.get("Risposta") or "", "src": r.get("Fonte") or ""} for r in f]
 
+
+# ---------- calendario delle consegne (.ics) ----------
+def ics_escape(t):
+    return (t or "").replace("\\", "\\\\").replace(";", "\\;").replace(",", "\\,").replace("\n", "\\n")
+
+def deadlines_ics(deadlines):
+    out = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Full gas DES COM 1//IT", "CALSCALE:GREGORIAN",
+           "METHOD:PUBLISH", "X-WR-CALNAME:Consegne DES COM 1", "X-WR-TIMEZONE:Europe/Rome", "REFRESH-INTERVAL;VALUE=DURATION:PT1H"]
+    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    for d in deadlines:
+        raw = d["date"]
+        if len(raw) == 10:
+            at = datetime.fromisoformat(raw + "T23:59:00").replace(tzinfo=ROME)
+        else:
+            at = datetime.fromisoformat(raw.replace("Z", "+00:00"))
+        at = at.astimezone(timezone.utc)
+        uid = hashlib.sha1((d["title"] + raw).encode()).hexdigest()[:16] + "@fullgas"
+        title = ("Consegna: " + d["title"]) if "consegna" not in d["title"].lower() else d["title"]
+        out += ["BEGIN:VEVENT", f"UID:{uid}", f"DTSTAMP:{stamp}",
+                f"DTSTART:{(at - timedelta(minutes=30)).strftime('%Y%m%dT%H%M%SZ')}", f"DTEND:{at.strftime('%Y%m%dT%H%M%SZ')}",
+                f"SUMMARY:{ics_escape(title)}", f"DESCRIPTION:{ics_escape((d.get('subject') or '') + chr(10) + (d.get('note') or ''))}",
+                "BEGIN:VALARM", "ACTION:DISPLAY", f"DESCRIPTION:{ics_escape(title)}", "TRIGGER:-P1D", "END:VALARM",
+                "BEGIN:VALARM", "ACTION:DISPLAY", f"DESCRIPTION:{ics_escape(title)}", "TRIGGER:-PT3H", "END:VALARM",
+                "END:VEVENT"]
+    out.append("END:VCALENDAR")
+    return "\r\n".join(out) + "\r\n"
+
 # ---------- main ----------
 def main():
     data = json.loads((ROOT / "data.json").read_text(encoding="utf-8"))
@@ -148,6 +175,7 @@ def main():
     if (ROOT / "files").is_dir():
         shutil.copytree(ROOT / "files", out / "files", dirs_exist_ok=True)
     (out / "index.html").write_text(html.replace("__DATA__", json.dumps(data, ensure_ascii=False).replace("</", "<\\/")), encoding="utf-8")
+    (out / "consegne.ics").write_text(deadlines_ics(data.get("deadlines") or []), encoding="utf-8")
     print("sito generato in _site/index.html")
 
 if __name__ == "__main__":
