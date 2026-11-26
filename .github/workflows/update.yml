@@ -8,7 +8,7 @@ on:
     branches: [main]
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -28,6 +28,15 @@ jobs:
         run: python scripts/update.py
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+      - name: Salva i dati una volta al giorno (tiene attivo l'aggiornamento automatico)
+        if: github.event_name == 'schedule' && github.event.schedule == '7 * * * *'
+        run: |
+          if [ "$(date -u +%H)" = "03" ]; then
+            git config user.name "full-gas-bot"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data.json
+            git diff --staged --quiet || (git commit -m "Dati aggiornati" && git push)
+          fi
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
