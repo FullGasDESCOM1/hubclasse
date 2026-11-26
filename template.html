@@ -437,7 +437,7 @@ footer{margin-top:28px;display:flex;justify-content:space-between;gap:12px;flex-
         <div class="c-head"><h3>Assenze</h3><p>Le tue, salvate solo su questo dispositivo</p></div>
         <div class="abs-intro"><span>La frequenza è obbligatoria all'80%: in ogni materia puoi perdere al massimo il 20% delle ore. Segna qui le lezioni che salti e vedi quante te ne restano.</span></div>
         <div id="absList"></div>
-        <div class="abs-foot">Oltre il limite serve una richiesta in segreteria didattica per gravi motivi, e decide il Coordinatore Accademico (Regolamento didattico, art. 5.7 e 5.8).</div>
+        <div class="abs-foot" id="absFoot">Oltre il limite serve una richiesta in segreteria didattica per gravi motivi, e decide il Coordinatore Accademico (Regolamento didattico, art. 5.7 e 5.8).</div>
       </section>
 
       <div class="sec-t" id="materie"><h2>Materie</h2><span class="count num">9 materie</span>
@@ -683,6 +683,8 @@ function lessonLen(s) {
   return d.length ? d[Math.floor(d.length / 2)] : 3;
 }
 function renderAbs() {
+  const mod = D.docs.find(d => d.url && /assenz/i.test(d.name));
+  if (mod && !$('#absMod')) $('#absFoot').insertAdjacentHTML('beforeend', ` <a id="absMod" class="tag k" style="margin-left:6px" href="${esc(mod.url)}" target="_blank" rel="noopener">Scarica il modulo di giustificazione</a>`);
   const maxAll = Math.max(...SUB.map(absMax));
   $('#absList').innerHTML = SUB.map((s, i) => {
     const max = absMax(s), used = absGet(s.name), len = lessonLen(s), left = max - used;

@@ -6,7 +6,7 @@ Fonti:
 Se una fonte non risponde, restano i dati dell'ultima versione di data.json.
 Solo libreria standard di Python: niente da installare.
 """
-import json, os, re, sys, urllib.request
+import json, os, re, shutil, sys, urllib.request
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -134,6 +134,8 @@ def main():
     (ROOT / "data.json").write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
     html = (ROOT / "template.html").read_text(encoding="utf-8")
     out = ROOT / "_site"; out.mkdir(exist_ok=True)
+    if (ROOT / "files").is_dir():
+        shutil.copytree(ROOT / "files", out / "files", dirs_exist_ok=True)
     (out / "index.html").write_text(html.replace("__DATA__", json.dumps(data, ensure_ascii=False).replace("</", "<\\/")), encoding="utf-8")
     print("sito generato in _site/index.html")
 
