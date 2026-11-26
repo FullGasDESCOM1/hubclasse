@@ -86,6 +86,9 @@ def val(p):
 
 SEM_ORDER = {"I": 0, "I/II": 1, "II": 2}
 
+def lines(t):
+    return [x.strip() for x in (t or "").splitlines() if x.strip()]
+
 def from_notion(data, token):
     m = notion_rows(NOTION_DB["materie"], token)
     if m:
@@ -93,7 +96,10 @@ def from_notion(data, token):
             "name": r["Materia"], "key": (r.get("Sigla") or " ".join((r["Materia"] or "").upper().split()[:2])),
             "cfa": r.get("CFA") or 0, "ore": r.get("Ore") or 0, "sem": r.get("Semestre") or "",
             "tipo": r.get("Tipo") or "", "esame": r.get("Esame") or "Da verificare", "note": r.get("Note") or "",
-            "moodle": r.get("Link Moodle"), "drive": r.get("Cartella Drive")} for r in m if r.get("Materia")],
+            "moodle": r.get("Link Moodle"), "drive": r.get("Cartella Drive"), "pdf": r.get("PDF programma"),
+            "docenti": r.get("Docente") or "", "obiettivi": r.get("Obiettivi") or "",
+            "programma": lines(r.get("Programma")), "valutazione": r.get("Valutazione") or "",
+            "bibliografia": lines(r.get("Bibliografia"))} for r in m if r.get("Materia")],
             key=lambda s: (SEM_ORDER.get(s["sem"], 3), -s["cfa"], s["name"]))
     data["deadlines"] = [{"title": r["Cosa"], "date": r["Data"], "type": r.get("Tipo"), "url": r.get("Link")}
                          for r in notion_rows(NOTION_DB["scadenze"], token) if r.get("Cosa") and r.get("Data")]
