@@ -43,7 +43,7 @@ svg{display:block}
 .rbtn.on{background:var(--ink);color:var(--inv)}
 .rbtn .tip{position:absolute;left:58px;background:var(--ink);color:var(--inv);font-size:12px;font-weight:600;padding:5px 10px;border-radius:999px;white-space:nowrap;opacity:0;pointer-events:none;transform:translateX(-4px);transition:.15s}
 .rbtn:hover .tip{opacity:1;transform:none}
-main{padding:22px 28px 60px 6px;max-width:1500px;width:100%}
+main{padding:22px 28px 60px 6px;width:100%;min-width:0}
 
 /* ---------- barra giornata ---------- */
 .day{background:var(--dark);color:#fff;border-radius:999px;height:68px;display:flex;align-items:center;gap:14px;padding:0 10px 0 26px}
@@ -623,15 +623,16 @@ $$('#settimana .seg-ctl button').forEach(b => b.onclick = () => { wkView = b.dat
 let nf = 'Tutti';
 function renderNews() {
   const srcs = ['Tutti', ...new Set(D.news.map(n => n.source))];
+  $('#newsChips').style.display = D.news.length ? '' : 'none';
   $('#newsChips').innerHTML = srcs.map(s => `<button class="chip ${s === nf ? 'on' : ''}" data-s="${esc(s)}">${esc(s)}</button>`).join('');
   $$('#newsChips .chip').forEach(b => b.onclick = () => { nf = b.dataset.s; renderNews(); });
   const list = D.news.filter(n => nf === 'Tutti' || n.source === nf).sort((a, b) => b.date.localeCompare(a.date));
-  $('#newsCount').textContent = D.news.some(n => !n.example) ? `${list.length} recenti` : 'Anteprima';
+  $('#newsCount').textContent = D.news.length ? `${list.length} recenti` : '';
   $('#news').innerHTML = list.length ? list.map(n => `<article class="nw ${n.important ? 'hot' : ''}">
       <h5>${esc(n.title)}</h5>${n.url ? `<a class="circle ${n.important ? 'w' : 'k'}" href="${esc(n.url)}" target="_blank" rel="noopener" aria-label="Apri">${ARR}</a>` : '<span></span>'}
       <p>${esc(n.text)}</p>
       <div class="foot">${n.important ? '<span class="tag red">Importante</span>' : ''}<span class="tag ${n.important ? '' : 'k'}" ${n.important ? 'style="background:#262626;color:#fff"' : ''}>${esc(n.source)}</span>${n.example ? '<span class="tag">Esempio</span>' : ''}<time>${fS.format(kd(n.date))}</time></div>
-    </article>`).join('') : '<div class="emptyw">Nessun avviso da questa fonte.</div>';
+    </article>`).join('') : `<div class="emptyw">${D.news.length ? 'Nessun avviso da questa fonte.' : 'Nessun avviso per ora. Le comunicazioni importanti per la classe compariranno qui.'}</div>`;
 }
 
 /* materie */
