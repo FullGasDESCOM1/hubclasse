@@ -302,6 +302,42 @@ a:hover > .circle, button:hover > .circle, .circle:hover{transform:rotate(45deg)
 .ct span{font-size:12px;color:var(--mute)}
 .ct .circle{margin-left:auto;width:38px;height:38px}
 .ct:hover .circle{background:var(--red);color:#fff}
+
+/* trascrivi lezione */
+.txbtn{display:flex;align-items:center;gap:10px;margin-top:8px;padding:12px 16px;border-radius:var(--r-l);background:var(--dark-2);font-size:13px;font-weight:600;color:#fff;width:100%;text-align:left}
+.txbtn svg{width:18px;height:18px}
+.txbtn:hover{background:var(--red)}
+.tx{position:fixed;inset:0;z-index:70;background:#0a0a0a;color:#fff;display:none;flex-direction:column}
+.tx.on{display:flex}
+.tx-top{display:flex;align-items:center;gap:12px;padding:calc(16px + env(safe-area-inset-top)) 20px 12px;flex-wrap:wrap}
+.tx-top h3{font-size:22px;font-weight:700;letter-spacing:-.02em;margin-right:auto}
+.tx-top select{height:42px;border-radius:999px;background:#1c1c1c;color:#fff;border:0;padding:0 16px;font:600 14px var(--f);max-width:min(60vw,340px)}
+.tx-close{width:42px;height:42px;border-radius:50%;background:#1c1c1c;display:grid;place-items:center}
+.tx-close svg{width:16px;height:16px}
+.tx-body{flex:1;overflow:auto;padding:8px 20px 24px;max-width:900px;width:100%;margin:0 auto;font-size:20px;line-height:1.5;letter-spacing:-.005em}
+.tx-body p{margin:0 0 14px}
+.tx-body p time{display:block;font-size:12px;color:#777;font-weight:700;font-variant-numeric:tabular-nums;margin-bottom:2px}
+.tx-body .interim{color:#8a8a8a}
+.tx-empty{color:#8a8a8a;font-size:17px;max-width:46ch;margin-top:8vh}
+.tx-empty b{color:#fff;display:block;font-size:26px;letter-spacing:-.02em;margin-bottom:10px}
+.tx-bar{display:flex;align-items:center;gap:12px;padding:14px 20px calc(14px + env(safe-area-inset-bottom));border-top:1px solid #222;flex-wrap:wrap}
+.tx-rec{height:56px;padding:0 24px 0 18px;border-radius:999px;background:var(--red);color:#fff;font-weight:700;font-size:16px;display:flex;align-items:center;gap:10px}
+.tx-rec i{width:14px;height:14px;border-radius:50%;background:#fff}
+.tx-rec.on{background:#fff;color:#000}
+.tx-rec.on i{border-radius:3px;background:var(--red);animation:pulse 1.6s infinite}
+.tx-meta{font-size:13px;color:#8a8a8a;line-height:1.3}
+.tx-meta b{display:block;color:#fff;font-size:20px;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.tx-actions{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap}
+.tx-actions button{height:42px;padding:0 16px;border-radius:999px;background:#1c1c1c;font-size:13px;font-weight:600}
+.tx-actions button:hover{background:#2a2a2a}
+.tx-state{font-size:12px;color:#8a8a8a;width:100%}
+.tx-state.err{color:var(--red-2)}
+.tx-saved .it{display:flex;gap:12px;align-items:center;padding:14px 0;border-top:1px solid #222;font-size:15px}
+.tx-saved .it span{color:#8a8a8a;font-size:13px;display:block}
+.tx-saved .it button{height:36px;padding:0 14px;border-radius:999px;background:#1c1c1c;font-size:12px;font-weight:600}
+.tx-saved .it button.open{margin-left:auto}
+@media (max-width:760px){.tx-body{font-size:18px}.tx-actions{margin-left:0;width:100%}.tx-actions button{flex:1}}
+
 footer{margin-top:28px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px;color:var(--mute);padding:0 6px}
 
 /* drawer materia */
@@ -430,6 +466,7 @@ footer{margin-top:28px;display:flex;justify-content:space-between;gap:12px;flex-
         <div class="c-head"><h3>Oggi</h3><p id="todayDate"></p></div>
         <div id="todayList"></div>
         <div class="deadline" id="deadline"></div>
+        <button class="txbtn" data-tx><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>Trascrivi la lezione</button>
         <a class="calsub" href="webcal://fullgasdescom1.github.io/hubclasse/consegne.ics"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M12 13v5M9.5 15.5h5"/></svg>Metti le consegne nel tuo calendario</a>
       </section>
 
@@ -490,6 +527,24 @@ footer{margin-top:28px;display:flex;justify-content:space-between;gap:12px;flex-
   <div class="dr-top"><span class="tag">Materia</span><button class="circle" id="drClose" aria-label="Chiudi" style="background:var(--dark-2);color:#fff"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
   <div class="dr-body" id="drBody"></div>
 </aside>
+
+
+<div class="tx" id="tx" role="dialog" aria-modal="true" aria-label="Trascrivi lezione">
+  <div class="tx-top">
+    <h3>Trascrivi lezione</h3>
+    <select id="txSub" aria-label="Materia"></select>
+    <button class="tx-close" id="txClose" aria-label="Chiudi"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4l8 8M12 4l-8 8"/></svg></button>
+  </div>
+  <div class="tx-body" id="txBody" aria-live="polite"></div>
+  <div class="tx-bar">
+    <button class="tx-rec" id="txRec"><i></i><span>Avvia</span></button>
+    <div class="tx-meta"><b id="txTime">00:00</b><span id="txWords">0 parole</span></div>
+    <div class="tx-actions">
+      <button id="txCopy">Copia</button><button id="txDl">Scarica</button><button id="txNew">Nuova</button><button id="txSaved">Salvate</button>
+    </div>
+    <div class="tx-state" id="txState">Il testo resta solo su questo dispositivo. Trascrivi solo con il permesso del docente.</div>
+  </div>
+</div>
 
 <div class="sx" id="sx" role="dialog" aria-modal="true" aria-label="Cerca">
   <div class="sx-box">
@@ -716,6 +771,7 @@ function openSub(i) {
     <div class="tags"><span class="tag ${s.tipo === 'Caratterizzante' ? 'red' : ''}" ${s.tipo === 'Caratterizzante' ? 'style="background:var(--red)"' : ''}>${esc(s.tipo)}</span><span class="tag">${s.cfa} crediti</span><span class="tag">${s.ore} ore</span><span class="tag">${s.sem === 'I/II' ? 'Annuale' : s.sem + ' semestre'}</span></div>
     <div class="dr-links" style="margin-bottom:10px">${[s.moodle ? L(s.moodle, 'Moodle') : '', ...(s.links || []).map(l => L(l.url, esc(l.label))), s.drive ? L(s.drive, 'Drive') : '', s.pdf ? L(s.pdf, 'Programma') : ''].join('') || ''}${!s.moodle && !(s.links || []).some(l => /learn\.ied\.it/.test(l.url)) ? '<span>Moodle: link da aggiungere</span>' : ''}${!s.drive ? '<span>Drive: link da aggiungere</span>' : ''}</div>
     ${sDL.length ? `<div class="dr-box"><h6>Consegne in arrivo</h6><div class="dlist">${sDL.map(d => `<div class="dli" data-dl="${DL.indexOf(d)}"><div><b>${esc(d.title)}</b><span>${esc(whenTxt(d))}</span></div><span class="when">${untilTxt(d.at - new Date())}</span></div>`).join('')}</div></div>` : ''}
+    <button class="txbtn" data-tx="${esc(s.name)}" style="margin:0 0 10px"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"9\" y=\"3\" width=\"6\" height=\"11\" rx=\"3\"/><path d=\"M5 11a7 7 0 0 0 14 0M12 18v3\"/></svg>Trascrivi una lezione di ${esc(s.name)}</button>
     <div class="dr-box"><h6>Docenti</h6><p class="txt">${esc(s.docenti || t.join(', ') || 'Da confermare')}</p></div>
     <div class="dr-box"><h6>Prossime lezioni</h6>${up.length ? `<ul class="tl">${up.map(e => `<li><b>${cap(fDay.format(e.start))}, ${fT.format(e.start)}–${fT.format(e.end)}</b><span>${esc([e.unit, place(e)].filter(Boolean).join(' · '))}</span></li>`).join('')}</ul>` : '<p class="note">Nessuna lezione in calendario per ora.</p>'}</div>
     <div class="dr-box"><h6>Le tue assenze</h6><p class="txt"><b style="color:${used > max ? 'var(--red)' : '#fff'}">${fmtH(used)}</b> su un massimo di ${fmtH(max)}. ${used > max ? 'Hai superato il limite.' : 'Ti restano ' + fmtH(max - used) + '.'}</p></div>
@@ -761,6 +817,105 @@ function renderAbs() {
     absSave(); renderAbs();
   });
 }
+
+
+/* trascrivi lezione: riconoscimento vocale del browser, testo salvato solo sul dispositivo */
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+let TX = []; try { TX = JSON.parse(localStorage.getItem('fg-trascrizioni') || '[]'); } catch (e) {}
+const txSave = () => { try { localStorage.setItem('fg-trascrizioni', JSON.stringify(TX.slice(-30))); } catch (e) { txMsg('Memoria del browser piena: scarica e cancella qualche trascrizione.', true); } };
+let txCur = null, txRecog = null, txOn = false, txAcc = 0, txResume = 0, txInterim = '', txTimer = null, txWake = null, txView = 'text';
+const txMsg = (m, err) => { const el = $('#txState'); el.textContent = m; el.classList.toggle('err', !!err); };
+const txElapsed = () => txAcc + (txOn ? (Date.now() - txResume) / 1000 : 0);
+const mmss = s => { s = Math.floor(s); const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), x = s % 60; return (h ? h + ':' + String(m).padStart(2, '0') : String(m).padStart(2, '0')) + ':' + String(x).padStart(2, '0'); };
+const txWordsOf = t => t ? t.seg.reduce((a, x) => a + x.text.split(/\s+/).filter(Boolean).length, 0) : 0;
+function txDefaultSubject() {
+  const now = new Date();
+  const e = EV.find(x => !x.allDay && x.subj && x.end > now && x.start - now < 3 * 36e5);
+  return e ? e.subj.name : SUB[0].name;
+}
+function txRender() {
+  const b = $('#txBody');
+  if (txView === 'saved') {
+    b.innerHTML = '<div class="tx-saved">' + (TX.length ? [...TX].reverse().map(t => `<div class="it"><div>${esc(t.subject)}<span>${cap(fDS.format(new Date(t.started)))}, ${fT.format(new Date(t.started))} · ${txWordsOf(t)} parole</span></div><button class="open" data-id="${t.id}">Apri</button><button data-del="${t.id}">Elimina</button></div>`).join('') : '<p class="tx-empty">Nessuna trascrizione salvata su questo dispositivo.</p>') + '</div>';
+    $$('#txBody [data-id]').forEach(x => x.onclick = () => { txCur = TX.find(t => t.id == x.dataset.id); txAcc = txCur.dur || 0; $('#txSub').value = txCur.subject; txView = 'text'; txRender(); });
+    $$('#txBody [data-del]').forEach(x => x.onclick = () => { if (!confirmDel(x)) return; TX = TX.filter(t => t.id != x.dataset.del); if (txCur && txCur.id == x.dataset.del) txCur = null; txSave(); txRender(); });
+    return;
+  }
+  const near = b.scrollHeight - b.scrollTop - b.clientHeight < 120;
+  if (!txCur || (!txCur.seg.length && !txInterim)) {
+    b.innerHTML = SR ? `<div class="tx-empty"><b>Pronto quando vuoi.</b>Scegli la materia, appoggia il telefono sul banco rivolto verso il docente e premi Avvia. Il testo compare qui mentre parla. Tieni lo schermo acceso.</div>`
+      : `<div class="tx-empty"><b>Questo browser non trascrive.</b>Apri il sito con Safari su iPhone o con Chrome su computer e Android.</div>`;
+  } else {
+    b.innerHTML = txCur.seg.map(x => `<p><time>${mmss(x.t)}</time>${esc(x.text)}</p>`).join('') + (txInterim ? `<p class="interim">${esc(txInterim)}</p>` : '');
+    if (near || txOn) b.scrollTop = b.scrollHeight;
+  }
+  $('#txWords').textContent = txWordsOf(txCur) + ' parole';
+}
+// eliminare chiede un secondo tocco, senza finestre di conferma del browser
+function confirmDel(btn) { if (btn.dataset.armed) return true; btn.dataset.armed = 1; btn.textContent = 'Sicura?'; setTimeout(() => { delete btn.dataset.armed; btn.textContent = 'Elimina'; }, 2500); return false; }
+function txTick() { $('#txTime').textContent = mmss(txElapsed()); }
+async function txStart() {
+  if (!SR) return txMsg('Questo browser non supporta la trascrizione. Usa Safari su iPhone o Chrome.', true);
+  if (!txCur) { txCur = {id: Date.now(), subject: $('#txSub').value, started: new Date().toISOString(), seg: [], dur: 0}; TX.push(txCur); txAcc = 0; }
+  txView = 'text';
+  txRecog = new SR(); txRecog.lang = 'it-IT'; txRecog.continuous = true; txRecog.interimResults = true;
+  txRecog.onresult = e => {
+    txInterim = '';
+    for (let i = e.resultIndex; i < e.results.length; i++) {
+      const r = e.results[i], t = r[0].transcript.trim();
+      if (!t) continue;
+      if (r.isFinal) { txCur.seg.push({t: Math.max(0, txElapsed() - 2), text: t.charAt(0).toUpperCase() + t.slice(1)}); txCur.dur = txElapsed(); txSave(); }
+      else txInterim += t + ' ';
+    }
+    txRender();
+  };
+  txRecog.onerror = e => {
+    if (e.error === 'not-allowed' || e.error === 'service-not-allowed') { txStop(); txMsg('Il microfono non è autorizzato. Consenti il microfono per questo sito nelle impostazioni del browser.', true); }
+    else if (e.error === 'network') txMsg('Connessione assente: il riconoscimento vocale ha bisogno di internet. Riprovo da solo.', true);
+  };
+  txRecog.onend = () => { if (txOn) setTimeout(() => { try { txRecog.start(); } catch (err) {} }, 300); };
+  try { txRecog.start(); } catch (err) { return txMsg('Non riesco ad avviare il microfono. Ricarica la pagina e riprova.', true); }
+  txOn = true; txResume = Date.now();
+  $('#txRec').classList.add('on'); $('#txRec span').textContent = 'Pausa';
+  txMsg('In ascolto. Il testo viene salvato su questo dispositivo mentre scrivi.');
+  txTimer = setInterval(txTick, 500);
+  try { txWake = await navigator.wakeLock.request('screen'); } catch (err) {}
+  txRender();
+}
+function txStop() {
+  if (txOn) { txAcc = txElapsed(); txOn = false; }
+  if (txRecog) { txRecog.onend = null; try { txRecog.stop(); } catch (e) {} }
+  clearInterval(txTimer); txInterim = '';
+  if (txCur) { txCur.dur = txAcc; if (!txCur.seg.length) { TX = TX.filter(t => t !== txCur); txCur = null; txAcc = 0; } txSave(); }
+  try { txWake && txWake.release(); } catch (e) {} txWake = null;
+  $('#txRec').classList.remove('on'); $('#txRec span').textContent = txCur && txCur.seg.length ? 'Riprendi' : 'Avvia';
+  txMsg('In pausa. Il testo è salvato su questo dispositivo.'); txTick(); txRender();
+}
+function txText(t) {
+  const d = new Date(t.started);
+  return `${t.subject}\n${cap(fDay.format(d))}, ${fT.format(d)}\nTrascrizione automatica, da rileggere.\n\n` + t.seg.map(x => `[${mmss(x.t)}] ${x.text}`).join('\n') + '\n';
+}
+function openTx(subject) {
+  $('#txSub').innerHTML = SUB.map(x => `<option>${esc(x.name)}</option>`).join('') + '<option>Altro</option>';
+  $('#txSub').value = subject || (txCur && txCur.subject) || txDefaultSubject();
+  $('#tx').classList.add('on'); txView = 'text'; txTick(); txRender();
+}
+function closeTx() { if (txOn) txStop(); $('#tx').classList.remove('on'); }
+$('#txRec').onclick = () => txOn ? txStop() : txStart();
+$('#txClose').onclick = closeTx;
+$('#txSub').onchange = e => { if (txCur && !txCur.seg.length) txCur.subject = e.target.value; else if (txCur) { txCur.subject = e.target.value; txSave(); } };
+$('#txNew').onclick = () => { if (txOn) txStop(); txCur = null; txAcc = 0; txView = 'text'; $('#txRec span').textContent = 'Avvia'; txTick(); txRender(); txMsg('Nuova trascrizione. Quella di prima è tra le Salvate.'); };
+$('#txSaved').onclick = () => { if (txOn) txStop(); txView = txView === 'saved' ? 'text' : 'saved'; txRender(); };
+$('#txCopy').onclick = async () => { if (!txCur || !txCur.seg.length) return txMsg('Non c\'è ancora niente da copiare.', true); try { await navigator.clipboard.writeText(txText(txCur)); txMsg('Copiata. Ora puoi incollarla dove vuoi.'); } catch (e) { txMsg('Non riesco a copiare: usa Scarica.', true); } };
+$('#txDl').onclick = () => {
+  if (!txCur || !txCur.seg.length) return txMsg('Non c\'è ancora niente da scaricare.', true);
+  const a = document.createElement('a'), d = new Date(txCur.started);
+  a.href = URL.createObjectURL(new Blob([txText(txCur)], {type: 'text/plain;charset=utf-8'}));
+  a.download = `Trascrizione ${txCur.subject} ${d.toISOString().slice(0, 10)}.txt`;
+  document.body.appendChild(a); a.click(); a.remove(); txMsg('Scaricata.');
+};
+document.addEventListener('click', e => { const b = e.target.closest('[data-tx]'); if (b) { e.preventDefault(); closeDr(); openTx(b.dataset.tx || undefined); } });
+if (location.hash === '#trascrivi') setTimeout(() => openTx(), 50);
 
 /* regole */
 let rv = 'faq';
@@ -814,7 +969,7 @@ $('#openSearch').onclick = openSx; $('#sxIn').oninput = e => search(e.target.val
 $('#sx').onclick = e => { if (e.target.id === 'sx') closeSx(); };
 document.addEventListener('keydown', e => {
   const on = $('#sx').classList.contains('on');
-  if (e.key === 'Escape') { closeSx(); closeDr(); return; }
+  if (e.key === 'Escape') { closeSx(); closeDr(); if ($('#tx').classList.contains('on')) closeTx(); return; }
   if (!on && (e.key === '/' || (e.key === 'k' && (e.metaKey || e.ctrlKey))) && !/input|textarea/i.test(document.activeElement.tagName)) { e.preventDefault(); openSx(); }
   else if (on && e.key === 'ArrowDown') { e.preventDefault(); sel = Math.min(sel + 1, hits.length - 1); draw(); }
   else if (on && e.key === 'ArrowUp') { e.preventDefault(); sel = Math.max(sel - 1, 0); draw(); }
