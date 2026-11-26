@@ -95,7 +95,7 @@ a:hover > .circle, button:hover > .circle, .circle:hover{transform:rotate(45deg)
 .c-head p{font-size:13px;color:var(--mute)}
 .card.k .c-head p{color:#8c8c8c}
 .card.r .c-head p{color:#ffc9cf}
-.sp5{grid-column:span 5}.sp4{grid-column:span 4}.sp3{grid-column:span 3}.sp8{grid-column:span 8}.sp12{grid-column:1/-1}
+.sp7{grid-column:span 7}.sp5{grid-column:span 5}.sp4{grid-column:span 4}.sp3{grid-column:span 3}.sp8{grid-column:span 8}.sp12{grid-column:1/-1}
 .sec-t{grid-column:1/-1;display:flex;align-items:center;gap:14px;margin:30px 0 4px;flex-wrap:wrap}
 .sec-t h2{font-size:28px;font-weight:700;letter-spacing:-.03em}
 .sec-t .count{font-size:13px;font-weight:600;text-decoration:underline;text-underline-offset:4px}
@@ -138,17 +138,6 @@ a:hover > .circle, button:hover > .circle, .circle:hover{transform:rotate(45deg)
 .deadline{margin-top:14px;padding:14px 16px;border-radius:var(--r-l);border:1px solid var(--dark-line);font-size:13px;color:#a5a5a5;display:flex;gap:12px;align-items:center}
 .deadline b{color:#fff}
 .deadline svg{width:18px;height:18px;flex:none;color:var(--red)}
-
-/* crediti */
-.gauge{position:relative;margin:6px auto 0;max-width:280px}
-.gauge svg{width:100%;height:auto;overflow:visible}
-.gauge .mid{position:absolute;left:0;right:0;bottom:4px;text-align:center}
-.gauge .mid b{font-size:54px;font-weight:700;letter-spacing:-.05em;line-height:.9;display:block}
-.gauge .mid span{font-size:13px;color:var(--mute)}
-.legend{display:flex;justify-content:space-between;margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}
-.legend div b{display:block;font-size:26px;font-weight:700;letter-spacing:-.03em}
-.legend div span{font-size:12px;color:var(--mute);display:flex;align-items:center;gap:6px}
-.legend i{width:8px;height:8px;border-radius:50%;display:inline-block}
 
 /* settimana */
 .seg-ctl{display:inline-flex;background:var(--chip);border-radius:999px;padding:4px}
@@ -386,7 +375,7 @@ footer{margin-top:28px;display:flex;justify-content:space-between;gap:12px;flex-
 
 /* ---------- responsive ---------- */
 @media (max-width:1180px){
-  .sp5{grid-column:span 7}.sp4{grid-column:span 5}.sp3{grid-column:span 12}
+  .sp4{grid-column:span 5}.sp3{grid-column:span 12}
   .sp8,.sp4b{grid-column:1/-1}
   .stats{display:none}
 }
@@ -398,7 +387,7 @@ footer{margin-top:28px;display:flex;justify-content:space-between;gap:12px;flex-
   .rail .rbtn .tip{display:none}
   .rail .themeb{display:none}
   main{padding:14px 14px 110px}
-  .sp5,.sp4,.sp3{grid-column:1/-1}
+  .sp7,.sp5,.sp4,.sp3{grid-column:1/-1}
   .day{height:auto;border-radius:28px;flex-wrap:wrap;padding:14px}
   .day h2{display:none}
   .track{flex-basis:100%;order:3}
@@ -455,7 +444,7 @@ footer{margin-top:28px;display:flex;justify-content:space-between;gap:12px;flex-
     </div>
 
     <div class="bento">
-      <section class="card r next sp5" id="oggi" aria-live="polite">
+      <section class="card r next sp7" id="oggi" aria-live="polite">
         <div class="lbl"><i class="pulse"></i><span id="nextLabel">Prossima lezione tra</span></div>
         <a class="circle w go" href="#settimana" aria-label="Apri la settimana"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4.5 11.5l7-7M5.5 4.5h6v6"/></svg></a>
         <div class="big num" id="count">–</div>
@@ -464,7 +453,7 @@ footer{margin-top:28px;display:flex;justify-content:space-between;gap:12px;flex-
         <div class="bar" id="nextBar" hidden><i></i></div>
       </section>
 
-      <section class="card k sp4">
+      <section class="card k sp5">
         <div class="c-head"><h3>Oggi</h3><p id="todayDate"></p></div>
         <div id="todayList"></div>
         <div class="deadline" id="deadline"></div>
@@ -472,14 +461,6 @@ footer{margin-top:28px;display:flex;justify-content:space-between;gap:12px;flex-
         <a class="calsub" href="webcal://fullgasdescom1.github.io/hubclasse/consegne.ics"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M12 13v5M9.5 15.5h5"/></svg>Metti le consegne nel tuo calendario</a>
       </section>
 
-      <section class="card sp3">
-        <div class="c-head"><h3>Crediti</h3><p>Primo anno</p></div>
-        <div class="gauge" id="gauge"></div>
-        <div class="legend">
-          <div><b class="num">40</b><span><i style="background:var(--red)"></i>per il 2° anno</span></div>
-          <div style="text-align:right"><b class="num">9</b><span style="justify-content:flex-end">materie</span></div>
-        </div>
-      </section>
 
       <section class="card sp8" id="settimana">
         <div class="c-head">
@@ -677,21 +658,6 @@ function renderStats() {
   const news = D.news.filter(n => !n.example).length;
   $('#stats').innerHTML = [[ls.length, 'lezioni<br>questa settimana'], [hrs, 'ore<br>in aula'], [upcomingDL().length, 'consegne<br>in arrivo', null]]
     .map(([b, s, i]) => `<div class="stat"><b class="num">${b}</b>${i ? `<i>+${i}</i>` : ''}<span>${s}</span></div>`).join('');
-}
-
-/* crediti: 60 tacche, una per credito */
-function renderGauge() {
-  const n = 60, R = 120, cx = 140, cy = 140, ticks = [];
-  let c = 0;
-  SUB.forEach(s => { for (let i = 0; i < s.cfa; i++) ticks.push({s, car: s.tipo === 'Caratterizzante', first: i === 0}); });
-  const svg = ticks.map((t, i) => {
-    const a = Math.PI * (1 - i / (n - 1)), x1 = cx + Math.cos(a) * (R - 22), y1 = cy - Math.sin(a) * (R - 22), x2 = cx + Math.cos(a) * R, y2 = cy - Math.sin(a) * R;
-    const col = t.car ? 'var(--red)' : 'var(--ink)';
-    return `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="${col}" stroke-width="4" stroke-linecap="round" opacity="${t.car ? 1 : .85}"><title>${esc(t.s.name)}</title></line>`;
-  }).join('');
-  const a40 = Math.PI * (1 - 39.5 / (n - 1));
-  const mk = `<line x1="${cx + Math.cos(a40) * (R + 4)}" y1="${cy - Math.sin(a40) * (R + 4)}" x2="${cx + Math.cos(a40) * (R + 16)}" y2="${cy - Math.sin(a40) * (R + 16)}" stroke="var(--red)" stroke-width="3" stroke-linecap="round"/><text x="${cx + Math.cos(a40) * (R + 30)}" y="${cy - Math.sin(a40) * (R + 30)}" font-size="12" font-weight="700" fill="var(--red)" text-anchor="middle" font-family="Urbanist,sans-serif">40</text>`;
-  $('#gauge').innerHTML = `<svg viewBox="0 -10 280 160" role="img" aria-label="60 crediti, in rosso quelli delle materie caratterizzanti">${svg}${mk}</svg><div class="mid"><b class="num">60</b><span>crediti, uno per tacca</span></div>`;
 }
 
 /* settimana */
@@ -1011,7 +977,7 @@ $('#theme').onclick = () => { root.dataset.theme = root.dataset.theme === 'dark'
 const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) $$('.rail nav a').forEach(a => a.classList.toggle('on', a.dataset.sec === en.target.id)); }), {rootMargin: '-40% 0px -55% 0px'});
 ['oggi','settimana','assenze','materie','regole','link'].forEach(id => io.observe(document.getElementById(id)));
 
-renderStats(); renderGauge(); renderAbs(); renderNow(); renderWeek(); renderNews(); renderSubjects(); renderRules(); renderLinks();
+renderStats(); renderAbs(); renderNow(); renderWeek(); renderNews(); renderSubjects(); renderRules(); renderLinks();
 setInterval(renderNow, 1000);
 })();
 </script>
