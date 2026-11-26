@@ -290,6 +290,13 @@ a:hover > .circle, button:hover > .circle, .circle:hover{transform:rotate(45deg)
   .dr-links.three{grid-template-columns:1fr}
 }
 
+.ct{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--line)}
+.ct:first-child{border-top:0;padding-top:0}
+.ct .av{width:40px;height:40px;border-radius:50%;background:var(--chip);display:grid;place-items:center;font-weight:700;font-size:13px;flex:none}
+.ct b{display:block;font-size:15px}
+.ct span{font-size:12px;color:var(--mute)}
+.ct .circle{margin-left:auto;width:38px;height:38px}
+.ct:hover .circle{background:var(--red);color:#fff}
 footer{margin-top:28px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px;color:var(--mute);padding:0 6px}
 
 /* drawer materia */
@@ -313,6 +320,8 @@ footer{margin-top:28px;display:flex;justify-content:space-between;gap:12px;flex-
 .tl li b{font-size:14px;display:block}
 .tl li span{font-size:12px;color:#8c8c8c}
 .dr-links{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}
+.dr-links a{min-width:0}
+.dr-links a{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 .dr-links a,.dr-links span{background:#fff;color:#000;border-radius:999px;height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 6px 0 18px;font-weight:700;font-size:14px}
 .dr-links span{background:var(--dark-2);color:#777;font-weight:600;justify-content:center;padding:0 14px;font-size:12px;text-align:center}
 .dr-links .circle{width:36px;height:36px}
@@ -462,7 +471,8 @@ footer{margin-top:28px;display:flex;justify-content:space-between;gap:12px;flex-
         <div class="seg-ctl" id="ruleTabs" style="margin-left:auto"><button class="on" data-v="faq">Domande</button><button data-v="docs">Documenti</button></div>
       </div>
       <section class="card sp8"><div id="rules"></div></section>
-      <section class="sp4 sp4b" id="link"><div class="quick" id="quick"></div></section>
+      <section class="sp4 sp4b" id="link"><div class="quick" id="quick"></div>
+        <div class="card" style="margin-top:var(--gap)"><div class="c-head"><h3>Contatti</h3><p>Tocca per scrivere</p></div><div id="contacts"></div></div></section>
     </div>
 
     <footer><span id="updated"></span><span>Creato da Sawa PaccoBomba</span></footer>
@@ -698,7 +708,7 @@ function openSub(i) {
   const used = absGet(s.name), max = absMax(s);
   $('#drBody').innerHTML = `<h3 id="drTitle">${esc(s.name)}</h3>
     <div class="tags"><span class="tag ${s.tipo === 'Caratterizzante' ? 'red' : ''}" ${s.tipo === 'Caratterizzante' ? 'style="background:var(--red)"' : ''}>${esc(s.tipo)}</span><span class="tag">${s.cfa} crediti</span><span class="tag">${s.ore} ore</span><span class="tag">${s.sem === 'I/II' ? 'Annuale' : s.sem + ' semestre'}</span></div>
-    <div class="dr-links three" style="margin-bottom:10px">${L(s.moodle, 'Moodle')}${L(s.drive, 'Drive')}${L(s.pdf, 'Programma')}</div>
+    <div class="dr-links" style="margin-bottom:10px">${[s.moodle ? L(s.moodle, 'Moodle') : '', ...(s.links || []).map(l => L(l.url, esc(l.label))), s.drive ? L(s.drive, 'Drive') : '', s.pdf ? L(s.pdf, 'Programma') : ''].join('') || ''}${!s.moodle && !(s.links || []).some(l => /learn\.ied\.it/.test(l.url)) ? '<span>Moodle: link da aggiungere</span>' : ''}${!s.drive ? '<span>Drive: link da aggiungere</span>' : ''}</div>
     ${sDL.length ? `<div class="dr-box"><h6>Consegne in arrivo</h6><div class="dlist">${sDL.map(d => `<div class="dli" data-dl="${DL.indexOf(d)}"><div><b>${esc(d.title)}</b><span>${esc(whenTxt(d))}</span></div><span class="when">${untilTxt(d.at - new Date())}</span></div>`).join('')}</div></div>` : ''}
     <div class="dr-box"><h6>Docenti</h6><p class="txt">${esc(s.docenti || t.join(', ') || 'Da confermare')}</p></div>
     <div class="dr-box"><h6>Prossime lezioni</h6>${up.length ? `<ul class="tl">${up.map(e => `<li><b>${cap(fDay.format(e.start))}, ${fT.format(e.start)}–${fT.format(e.end)}</b><span>${esc([e.unit, place(e)].filter(Boolean).join(' · '))}</span></li>`).join('')}</ul>` : '<p class="note">Nessuna lezione in calendario per ora.</p>'}</div>
@@ -760,12 +770,16 @@ const ICONS = {
   Campus: '<path d="M3 9l9-5 9 5-9 5z"/><path d="M7 11.5V16c3 2 7 2 10 0v-4.5"/>',
   Moodle: '<rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/>',
   Orario: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
-  Segreteria: '<path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/>'
+  Segreteria: '<path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/>',
+  'Servizi studenti': '<circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4.5-6 8-6s7 2 8 6"/>'
 };
 function renderLinks() {
   $('#quick').innerHTML = D.links.map(l => `<a class="ql" href="${esc(l.url)}" target="_blank" rel="noopener">
     <div class="row"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">${ICONS[l.name] || ''}</svg></span><span class="circle l" style="width:38px;height:38px">${ARR}</span></div>
     <div><b>${esc(l.name)}</b><span>${esc(l.desc)}</span></div></a>`).join('');
+  const MAIL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>';
+  $('#contacts').innerHTML = (D.contacts || []).map((c, i) => `<a class="ct" href="#" data-c="${i}"><span class="av">${esc(c.name.split(' ').map(w => w[0].toUpperCase()).slice(0, 2).join(''))}</span><div><b>${esc(c.name)}</b><span>${esc(c.role)}</span></div><span class="circle l">${MAIL}</span></a>`).join('');
+  $$('#contacts .ct').forEach(a => a.onclick = e => { e.preventDefault(); const c = D.contacts[+a.dataset.c]; location.href = 'mailto:' + c.user + '@' + c.domain; });
   const g = new Date(D.generatedAt);
   $('#updated').textContent = `Aggiornato ${fDay.format(g)} alle ${fT.format(g)}`;
 }

@@ -8,8 +8,8 @@
   },
   {
    "name": "Moodle",
-   "desc": "Corsi, materiali e consegne",
-   "url": "https://learn.ied.it/login/index.php?loginredirect=1"
+   "desc": "Accesso a tutti i corsi",
+   "url": "https://learn.ied.it/login/index.php"
   },
   {
    "name": "Orario",
@@ -17,9 +17,9 @@
    "url": "webcal://ied.prod.up.cineca.it/api/FiltriICal/impegniICal?id=6aed9deaf488cc0014c74dcc"
   },
   {
-   "name": "Segreteria",
-   "desc": "Servizi agli studenti",
-   "url": "https://www.ied.it/studenti"
+   "name": "Servizi studenti",
+   "desc": "Il corso Moodle della sede di Torino",
+   "url": "https://learn.ied.it/course/view.php?id=6794"
   }
  ],
  "subjects": [
@@ -418,6 +418,26 @@
    "q": "Dove arrivano le comunicazioni ufficiali?",
    "a": "Sulla casella email istituzionale, da controllare regolarmente.",
    "src": "Regolamento generale, art. 21.1"
+  }
+ ],
+ "contacts": [
+  {
+   "name": "Damiano Gui",
+   "role": "Coordinatore del corso",
+   "user": "d.gui",
+   "domain": "ied.it"
+  },
+  {
+   "name": "Segreteria didattica",
+   "role": "IED Torino",
+   "user": "segreteriadidattica",
+   "domain": "torino.ied.it"
+  },
+  {
+   "name": "Roberta Di Sabatino",
+   "role": "IED Torino",
+   "user": "r.disabatino",
+   "domain": "ied.it"
   }
  ]
 }

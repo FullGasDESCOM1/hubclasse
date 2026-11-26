@@ -87,6 +87,14 @@ def val(p):
 
 SEM_ORDER = {"I": 0, "I/II": 1, "II": 2}
 
+def links(t):
+    out = []
+    for x in lines(t):
+        if "|" in x:
+            label, url = (y.strip() for y in x.split("|", 1))
+            if url.startswith("http"): out.append({"label": label, "url": url})
+    return out
+
 def lines(t):
     return [x.strip() for x in (t or "").splitlines() if x.strip()]
 
@@ -100,7 +108,7 @@ def from_notion(data, token):
             "moodle": r.get("Link Moodle"), "drive": r.get("Cartella Drive"), "pdf": r.get("PDF programma"),
             "docenti": r.get("Docente") or "", "obiettivi": r.get("Obiettivi") or "",
             "programma": lines(r.get("Programma")), "valutazione": r.get("Valutazione") or "",
-            "bibliografia": lines(r.get("Bibliografia"))} for r in m if r.get("Materia")],
+            "bibliografia": lines(r.get("Bibliografia")), "links": links(r.get("Altri link"))} for r in m if r.get("Materia")],
             key=lambda s: (SEM_ORDER.get(s["sem"], 3), -s["cfa"], s["name"]))
     names = {r["_id"]: r["Materia"] for r in m if r.get("Materia")}
     data["deadlines"] = sorted([{"title": r["Cosa"], "date": r["Data"], "type": r.get("Tipo") or "Consegna", "url": r.get("Link"),
