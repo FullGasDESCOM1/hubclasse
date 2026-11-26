@@ -13,7 +13,7 @@ from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parent.parent
 ROME = ZoneInfo("Europe/Rome")
-ICAL_URL = "https://ied.prod.up.cineca.it/api/FiltriICal/impegniICal?id=6aed9deaf488cc0014c74dcc"
+ICAL_URL = "https://ied.prod.up.cineca.it/api/FiltriICal/impegniICal?id=6b0849531bc8320014c62681"
 NOTION_DB = {
     "materie":   "ca968f4869cc4227ba5d61f2aa532c5b",
     "scadenze":  "706b32805135439083de95804963191d",
