@@ -331,6 +331,8 @@ a:hover > .circle, button:hover > .circle, .circle:hover{transform:rotate(45deg)
 .tx-actions button{height:42px;padding:0 16px;border-radius:999px;background:#1c1c1c;font-size:13px;font-weight:600}
 .tx-actions button:hover{background:#2a2a2a}
 .tx-state{font-size:12px;color:#8a8a8a;width:100%}
+.tx-actions button.need{background:var(--red);color:#fff;animation:pulse 1.8s infinite}
+.tx-saved .badge{display:inline-block;margin-left:6px;font-size:11px;font-weight:700;color:#fff;background:var(--red);border-radius:999px;padding:1px 8px;vertical-align:1px}
 .tx-state.err{color:var(--red-2)}
 .tx-saved .it{display:flex;gap:12px;align-items:center;padding:14px 0;border-top:1px solid #222;font-size:15px}
 .tx-saved .it span{color:#8a8a8a;font-size:13px;display:block}
@@ -540,9 +542,9 @@ footer{margin-top:28px;display:flex;justify-content:space-between;gap:12px;flex-
     <button class="tx-rec" id="txRec"><i></i><span>Avvia</span></button>
     <div class="tx-meta"><b id="txTime">00:00</b><span id="txWords">0 parole</span></div>
     <div class="tx-actions">
-      <button id="txCopy">Copia</button><button id="txDl">Scarica</button><button id="txNew">Nuova</button><button id="txSaved">Salvate</button>
+      <button id="txDl">Salva</button><button id="txCopy">Copia</button><button id="txNew">Nuova</button><button id="txSaved">Salvate</button>
     </div>
-    <div class="tx-state" id="txState">Il testo resta solo su questo dispositivo. Trascrivi solo con il permesso del docente.</div>
+    <div class="tx-state" id="txState">A fine lezione premi Salva: la trascrizione va in File, Note, Drive o dove preferisci. Trascrivi solo con il permesso del docente.</div>
   </div>
 </div>
 
@@ -836,7 +838,7 @@ function txDefaultSubject() {
 function txRender() {
   const b = $('#txBody');
   if (txView === 'saved') {
-    b.innerHTML = '<div class="tx-saved">' + (TX.length ? [...TX].reverse().map(t => `<div class="it"><div>${esc(t.subject)}<span>${cap(fDS.format(new Date(t.started)))}, ${fT.format(new Date(t.started))} · ${txWordsOf(t)} parole</span></div><button class="open" data-id="${t.id}">Apri</button><button data-del="${t.id}">Elimina</button></div>`).join('') : '<p class="tx-empty">Nessuna trascrizione salvata su questo dispositivo.</p>') + '</div>';
+    b.innerHTML = '<div class="tx-saved">' + (TX.length ? [...TX].reverse().map(t => `<div class="it"><div>${esc(t.subject)}${t.saved ? '' : '<i class="badge">Da salvare</i>'}<span>${cap(fDS.format(new Date(t.started)))}, ${fT.format(new Date(t.started))} · ${txWordsOf(t)} parole</span></div><button class="open" data-id="${t.id}">Apri</button><button data-del="${t.id}">Elimina</button></div>`).join('') : '<p class="tx-empty">Nessuna trascrizione salvata su questo dispositivo.</p>') + '</div>';
     $$('#txBody [data-id]').forEach(x => x.onclick = () => { txCur = TX.find(t => t.id == x.dataset.id); txAcc = txCur.dur || 0; $('#txSub').value = txCur.subject; txView = 'text'; txRender(); });
     $$('#txBody [data-del]').forEach(x => x.onclick = () => { if (!confirmDel(x)) return; TX = TX.filter(t => t.id != x.dataset.del); if (txCur && txCur.id == x.dataset.del) txCur = null; txSave(); txRender(); });
     return;
@@ -850,21 +852,24 @@ function txRender() {
     if (near || txOn) b.scrollTop = b.scrollHeight;
   }
   $('#txWords').textContent = txWordsOf(txCur) + ' parole';
+  txNeedSave();
 }
 // eliminare chiede un secondo tocco, senza finestre di conferma del browser
 function confirmDel(btn) { if (btn.dataset.armed) return true; btn.dataset.armed = 1; btn.textContent = 'Sicura?'; setTimeout(() => { delete btn.dataset.armed; btn.textContent = 'Elimina'; }, 2500); return false; }
+function txNeedSave() { const need = !!(txCur && txCur.seg.length && !txCur.saved); $('#txDl').classList.toggle('need', need && !txOn); return need; }
 function txTick() { $('#txTime').textContent = mmss(txElapsed()); }
 async function txStart() {
   if (!SR) return txMsg('Questo browser non supporta la trascrizione. Usa Safari su iPhone o Chrome.', true);
   if (!txCur) { txCur = {id: Date.now(), subject: $('#txSub').value, started: new Date().toISOString(), seg: [], dur: 0}; TX.push(txCur); txAcc = 0; }
   txView = 'text';
+  try { navigator.storage && navigator.storage.persist && navigator.storage.persist(); } catch (e) {}
   txRecog = new SR(); txRecog.lang = 'it-IT'; txRecog.continuous = true; txRecog.interimResults = true;
   txRecog.onresult = e => {
     txInterim = '';
     for (let i = e.resultIndex; i < e.results.length; i++) {
       const r = e.results[i], t = r[0].transcript.trim();
       if (!t) continue;
-      if (r.isFinal) { txCur.seg.push({t: Math.max(0, txElapsed() - 2), text: t.charAt(0).toUpperCase() + t.slice(1)}); txCur.dur = txElapsed(); txSave(); }
+      if (r.isFinal) { txCur.saved = false; txCur.seg.push({t: Math.max(0, txElapsed() - 2), text: t.charAt(0).toUpperCase() + t.slice(1)}); txCur.dur = txElapsed(); txSave(); }
       else txInterim += t + ' ';
     }
     txRender();
@@ -889,7 +894,7 @@ function txStop() {
   if (txCur) { txCur.dur = txAcc; if (!txCur.seg.length) { TX = TX.filter(t => t !== txCur); txCur = null; txAcc = 0; } txSave(); }
   try { txWake && txWake.release(); } catch (e) {} txWake = null;
   $('#txRec').classList.remove('on'); $('#txRec span').textContent = txCur && txCur.seg.length ? 'Riprendi' : 'Avvia';
-  txMsg('In pausa. Il testo è salvato su questo dispositivo.'); txTick(); txRender();
+  txMsg(txCur && txCur.seg.length && !txCur.saved ? 'In pausa. Quando la lezione è finita premi Salva per metterla al sicuro.' : 'In pausa.'); txTick(); txRender();
 }
 function txText(t) {
   const d = new Date(t.started);
@@ -900,21 +905,41 @@ function openTx(subject) {
   $('#txSub').value = subject || (txCur && txCur.subject) || txDefaultSubject();
   $('#tx').classList.add('on'); txView = 'text'; txTick(); txRender();
 }
-function closeTx() { if (txOn) txStop(); $('#tx').classList.remove('on'); }
+let txCloseArmed = false;
+function closeTx(force) {
+  if (txOn) txStop();
+  if (!force && txNeedSave() && !txCloseArmed) { txCloseArmed = true; setTimeout(() => txCloseArmed = false, 4000); return txMsg('Questa trascrizione non è ancora salvata fuori dal sito. Premi Salva, oppure tocca di nuovo la X per chiudere lo stesso.', true); }
+  txCloseArmed = false; $('#tx').classList.remove('on');
+}
 $('#txRec').onclick = () => txOn ? txStop() : txStart();
-$('#txClose').onclick = closeTx;
+$('#txClose').onclick = () => closeTx();
 $('#txSub').onchange = e => { if (txCur && !txCur.seg.length) txCur.subject = e.target.value; else if (txCur) { txCur.subject = e.target.value; txSave(); } };
-$('#txNew').onclick = () => { if (txOn) txStop(); txCur = null; txAcc = 0; txView = 'text'; $('#txRec span').textContent = 'Avvia'; txTick(); txRender(); txMsg('Nuova trascrizione. Quella di prima è tra le Salvate.'); };
+$('#txNew').onclick = () => { if (txOn) txStop(); txCur = null; txAcc = 0; txView = 'text'; $('#txRec span').textContent = 'Avvia'; txTick(); txRender(); txMsg(TX.some(t => !t.saved) ? 'Nuova trascrizione. Quella di prima è tra le Salvate, ancora da salvare.' : 'Nuova trascrizione.'); };
 $('#txSaved').onclick = () => { if (txOn) txStop(); txView = txView === 'saved' ? 'text' : 'saved'; txRender(); };
-$('#txCopy').onclick = async () => { if (!txCur || !txCur.seg.length) return txMsg('Non c\'è ancora niente da copiare.', true); try { await navigator.clipboard.writeText(txText(txCur)); txMsg('Copiata. Ora puoi incollarla dove vuoi.'); } catch (e) { txMsg('Non riesco a copiare: usa Scarica.', true); } };
-$('#txDl').onclick = () => {
-  if (!txCur || !txCur.seg.length) return txMsg('Non c\'è ancora niente da scaricare.', true);
-  const a = document.createElement('a'), d = new Date(txCur.started);
-  a.href = URL.createObjectURL(new Blob([txText(txCur)], {type: 'text/plain;charset=utf-8'}));
-  a.download = `Trascrizione ${txCur.subject} ${d.toISOString().slice(0, 10)}.txt`;
-  document.body.appendChild(a); a.click(); a.remove(); txMsg('Scaricata.');
+$('#txCopy').onclick = async () => { if (!txCur || !txCur.seg.length) return txMsg('Non c\'è ancora niente da copiare.', true); try { await navigator.clipboard.writeText(txText(txCur)); txCur.saved = true; txSave(); txRender(); txMsg('Copiata. Incollala in Note, Notion o dove vuoi.'); } catch (e) { txMsg('Non riesco a copiare: usa Scarica.', true); } };
+$('#txDl').onclick = async () => {
+  if (!txCur || !txCur.seg.length) return txMsg('Non c\'è ancora niente da salvare.', true);
+  if (txOn) txStop();
+  const d = new Date(txCur.started), name = `Trascrizione ${txCur.subject} ${d.toISOString().slice(0, 10)}.txt`.replace(/[\\/:*?"<>|]/g, '');
+  const text = txText(txCur);
+  const file = new File([text], name, {type: 'text/plain'});
+  try {
+    if (navigator.canShare && navigator.canShare({files: [file]})) {
+      await navigator.share({files: [file], title: name});
+    } else {
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(new Blob([text], {type: 'text/plain;charset=utf-8'}));
+      a.download = name; document.body.appendChild(a); a.click(); a.remove();
+    }
+    txCur.saved = true; txSave(); txRender();
+    txMsg('Salvata. La copia sul sito resta tra le Salvate come riserva.');
+  } catch (e) {
+    if (e && e.name === 'AbortError') txMsg('Salvataggio annullato. La trascrizione è ancora da salvare.', true);
+    else txMsg('Non riesco ad aprire il salvataggio: prova con Copia e incollala in Note.', true);
+  }
 };
 document.addEventListener('click', e => { const b = e.target.closest('[data-tx]'); if (b) { e.preventDefault(); closeDr(); openTx(b.dataset.tx || undefined); } });
+window.addEventListener('beforeunload', e => { if (txOn || txNeedSave()) { e.preventDefault(); e.returnValue = ''; } });
 if (location.hash === '#trascrivi') setTimeout(() => openTx(), 50);
 
 /* regole */
