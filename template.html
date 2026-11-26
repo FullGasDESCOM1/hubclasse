@@ -176,6 +176,19 @@ a:hover > .circle, button:hover > .circle, .circle:hover{transform:rotate(45deg)
 .ev.s3{background:var(--card);color:var(--ink);border:1.5px solid var(--ink)}
 .ev.evt{background:repeating-linear-gradient(135deg,var(--red) 0 8px,#c40017 8px 16px);color:#fff}
 .ev.off{background:repeating-linear-gradient(135deg,var(--chip) 0 10px,transparent 10px 20px);color:var(--mute);display:flex;align-items:center;justify-content:center;text-align:center;border:1px solid var(--line)}
+.ev.dl{background:var(--card);color:var(--red);border:2px solid var(--red);display:flex;flex-direction:column;justify-content:center;padding:6px 10px;z-index:2}
+.ev.dl h6{color:var(--red)}
+.ev.dl h6,.ev.dl p{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ev.dl p{opacity:1;color:var(--ink)}
+.deadline{cursor:pointer;transition:border-color .15s}
+.deadline:hover{border-color:#555}
+.deadline{flex-wrap:wrap}
+.deadline > span:first-of-type{flex:1;min-width:160px}
+.deadline .dl-c{margin-left:auto;font-size:18px;font-weight:700;color:#fff;letter-spacing:-.03em;white-space:nowrap}
+.dlist .dli{display:flex;gap:12px;align-items:center;padding:10px 0;border-top:1px solid #2b2b2b;cursor:pointer}
+.dlist .dli b{font-size:14px;display:block}
+.dlist .dli span{font-size:12px;color:#8c8c8c}
+.dlist .dli .when{margin-left:auto;font-size:13px;font-weight:700;color:var(--red-2);white-space:nowrap}
 .nowbar{position:absolute;left:-4px;right:-4px;height:2px;background:var(--red);z-index:3}
 .nowbar::before{content:"";position:absolute;left:-4px;top:-4px;width:10px;height:10px;border-radius:50%;background:var(--red)}
 .list .row{display:flex;gap:14px;align-items:center;padding:12px 4px;border-top:1px solid var(--line)}
@@ -510,6 +523,24 @@ const place = e => [e.room, e.site].filter(Boolean).join(', ');
 const evOn = k => EV.filter(e => dayKey(e.start) === k);
 const teachers = s => s.docenti ? s.docenti.replace(/\s*\([^)]*\)/g, '').split(/,\s*/).filter(Boolean) : [...new Set(EV.filter(e => e.subj === s && e.who).map(e => e.who))];
 
+/* consegne */
+const DL = (D.deadlines || []).map(d => ({...d, at: new Date(d.date.length === 10 ? d.date + 'T23:59:00+01:00' : d.date)})).sort((a, b) => a.at - b.at);
+const upcomingDL = () => DL.filter(d => d.at > new Date());
+const untilTxt = ms => { const h = ms / 36e5; return h < 1 ? Math.max(1, Math.round(ms / 6e4)) + ' min' : h < 48 ? Math.round(h) + ' ore' : Math.round(h / 24) + ' giorni'; };
+const whenTxt = d => cap(fDay.format(d.at)) + (d.date.length > 10 ? ', ore ' + fT.format(d.at) : '');
+function openDeadline(i) {
+  const d = DL[i], s = SUB.find(x => x.name === d.subject);
+  $('#drBody').innerHTML = `<h3 id="drTitle">${esc(d.title)}</h3>
+    <div class="tags"><span class="tag" style="background:var(--red)">${esc(d.type)}</span>${s ? `<span class="tag">${esc(s.name)}</span>` : ''}</div>
+    <div class="dr-box"><h6>Scadenza</h6><p class="txt"><b style="color:#fff;font-size:20px">${esc(whenTxt(d))}</b>${d.at > new Date() ? '<br>Mancano ' + untilTxt(d.at - new Date()) + '.' : '<br>Scaduta.'}</p></div>
+    ${d.note ? `<div class="dr-box"><h6>Cosa consegnare</h6><p class="txt">${esc(d.note)}</p></div>` : ''}
+    ${d.url ? `<div class="dr-links" style="grid-template-columns:1fr"><a href="${esc(d.url)}" target="_blank" rel="noopener">Apri il link<span class="circle w">${ARR}</span></a></div>` : ''}
+    ${s ? `<div class="dr-links" style="grid-template-columns:1fr;margin-top:8px"><a href="#" id="toSub">Vai alla materia<span class="circle w">${ARR}</span></a></div>` : ''}`;
+  $('#drawer .dr-top .tag').textContent = 'Consegna';
+  const ts = $('#toSub'); if (ts) ts.onclick = e => { e.preventDefault(); openSub(SUB.indexOf(s)); };
+  $('#drawer').classList.add('on'); $('#scrim').classList.add('on'); $('#drClose').focus();
+}
+
 /* conto alla rovescia */
 function cd(ms) {
   const m = Math.max(0, Math.floor(ms / 6e4)), d = Math.floor(m / 1440), h = Math.floor(m % 1440 / 60), mm = m % 60;
@@ -557,10 +588,12 @@ function renderNow() {
   } else { $('#nextLabel').textContent = 'Nessuna lezione in calendario'; $('#count').textContent = '–'; }
 
   // consegna
-  const dl = (D.deadlines || []).map(d => ({...d, at: new Date(d.date)})).filter(d => d.at > now).sort((a, b) => a.at - b.at)[0];
-  $('#deadline').innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2M9 2h6"/></svg>` + (dl
-    ? `<span>Prossima consegna: <b>${esc(dl.title)}</b>, tra ${Math.ceil((dl.at - now) / 864e5)} giorni</span>`
+  const up = upcomingDL(), dl = up[0];
+  const box = $('#deadline');
+  box.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2M9 2h6"/></svg>` + (dl
+    ? `<span>Prossima consegna${up.length > 1 ? ' (' + up.length + ' in arrivo)' : ''}<br><b>${esc(dl.title)}</b><br>${esc(whenTxt(dl))}</span><span class="dl-c num">${untilTxt(dl.at - now)}</span>`
     : `<span>Nessuna consegna in calendario. Quando un docente fissa una scadenza, compare qui.</span>`);
+  box.onclick = dl ? () => openDeadline(DL.indexOf(dl)) : null;
 }
 
 /* statistiche testata */
@@ -569,7 +602,7 @@ function renderStats() {
   const ls = EV.filter(e => e.kind === 'lez' && dayKey(e.start) >= wk && dayKey(e.start) <= addDays(wk, 4));
   const hrs = Math.round(ls.reduce((a, e) => a + (e.end - e.start), 0) / 36e5);
   const news = D.news.filter(n => !n.example).length;
-  $('#stats').innerHTML = [[ls.length, 'lezioni<br>questa settimana'], [hrs, 'ore<br>in aula'], [news, 'avvisi<br>nuovi', news ? news : null]]
+  $('#stats').innerHTML = [[ls.length, 'lezioni<br>questa settimana'], [hrs, 'ore<br>in aula'], [upcomingDL().length, 'consegne<br>in arrivo', null]]
     .map(([b, s, i]) => `<div class="stat"><b class="num">${b}</b>${i ? `<i>+${i}</i>` : ''}<span>${s}</span></div>`).join('');
 }
 
@@ -592,15 +625,18 @@ function renderGauge() {
 let wk = monday(dayKey(new Date())), wkView = matchMedia('(max-width:760px)').matches ? 'list' : 'cal';
 $$('#settimana .seg-ctl button').forEach(x => x.classList.toggle('on', x.dataset.v === wkView));
 function renderWeek() {
-  const tk = dayKey(new Date()), days = [0,1,2,3,4].map(i => addDays(wk, i));
-  $('#wkLabel').textContent = `${fS.format(kd(days[0]))} – ${fS.format(kd(days[4]))}`;
+  const tk = dayKey(new Date()), all7 = [0,1,2,3,4,5,6].map(i => addDays(wk, i));
+  const days = all7.filter((k, i) => i < 5 || evOn(k).length || DL.some(d => dayKey(d.at) === k));
+  $('#wkLabel').textContent = `${fS.format(kd(all7[0]))} – ${fS.format(kd(days[days.length - 1]))}`;
   if (wkView === 'list') {
     const evs = days.flatMap(evOn);
-    $('#week').innerHTML = `<div class="list">${evs.length ? evs.map(e => `<div class="row"><time>${cap(fDS.format(e.start))}${e.allDay ? '' : ', ' + fT.format(e.start) + '–' + fT.format(e.end)}</time><div><b>${esc(e.name)}</b>${e.unit ? ` <span class="tag">${e.unit}</span>` : ''}<div style="font-size:13px;color:var(--mute)">${esc([place(e), e.who].filter(Boolean).join(', ') || (e.allDay ? 'IED chiuso' : ''))}</div></div></div>`).join('') : '<div class="emptyw">Nessuna lezione in calendario questa settimana.</div>'}</div>`;
+    const dls = DL.filter(d => days.includes(dayKey(d.at)));
+    $('#week').innerHTML = `<div class="list">${dls.map(d => `<div class="row" style="cursor:pointer" data-dl="${DL.indexOf(d)}"><time style="color:var(--red);font-weight:700">${esc(whenTxt(d))}</time><div><b>${esc(d.title)}</b> <span class="tag red">Consegna</span></div></div>`).join('')}${evs.length ? evs.map(e => `<div class="row"><time>${cap(fDS.format(e.start))}${e.allDay ? '' : ', ' + fT.format(e.start) + '–' + fT.format(e.end)}</time><div><b>${esc(e.name)}</b>${e.unit ? ` <span class="tag">${e.unit}</span>` : ''}<div style="font-size:13px;color:var(--mute)">${esc([place(e), e.who].filter(Boolean).join(', ') || (e.allDay ? 'IED chiuso' : ''))}</div></div></div>`).join('') : '<div class="emptyw">Nessuna lezione in calendario questa settimana.</div>'}</div>`;
+    $$('#week .row[data-dl]').forEach(el => el.onclick = () => openDeadline(+el.dataset.dl));
     return;
   }
   const PX = 52, HH = (H1 - H0) * PX, y = d => (hourOf(d) - H0) * PX;
-  let html = `<div class="cal"><div></div>${days.map(k => `<div class="dh ${k === tk ? 'today' : ''}"><b class="num">${+k.slice(8)}</b><span>${cap(fWd.format(kd(k)))}</span></div>`).join('')}`;
+  let html = `<div class="cal" style="grid-template-columns:44px repeat(${days.length},minmax(0,1fr))"><div></div>${days.map(k => `<div class="dh ${k === tk ? 'today' : ''}"><b class="num">${+k.slice(8)}</b><span>${cap(fWd.format(kd(k)))}</span></div>`).join('')}`;
   html += `<div class="axis" style="height:${HH}px">${Array.from({length: H1 - H0 + 1}, (_, i) => `<span style="top:${i * PX}px">${H0 + i}:00</span>`).join('')}</div>`;
   const now = new Date();
   html += days.map(k => {
@@ -609,10 +645,12 @@ function renderWeek() {
     const off = evs.find(e => e.allDay);
     if (off) c += `<div class="ev off" style="top:6px;bottom:6px"><h6>Chiuso<br>${esc(off.name)}</h6></div>`;
     else c += evs.map((e, i) => `<div class="ev ${e.kind === 'evt' ? 'evt' : e.subj.style}" data-e="${EV.indexOf(e)}" style="top:${y(e.start) + 2}px;height:${y(e.end) - y(e.start) - 4}px"><h6>${esc(e.name)}</h6><p class="num">${fT.format(e.start)}–${fT.format(e.end)}</p><p>${esc(e.room)}</p></div>`).join('');
+    c += DL.filter(d => dayKey(d.at) === k).map(d => { const h = Math.min(Math.max(hourOf(d.at), H0 + .5), H1 - .2); return `<div class="ev dl" data-dl="${DL.indexOf(d)}" style="top:${(h - H0) * PX - 50}px;height:50px"><h6>Consegna, ${fT.format(d.at)}</h6><p>${esc(d.title)}</p></div>`; }).join('');
     if (k === tk && hourOf(now) > H0 && hourOf(now) < H1) c += `<i class="nowbar" style="top:${y(now)}px"></i>`;
     return c + '</div>';
   }).join('');
   $('#week').innerHTML = html + '</div>';
+  $$('#week .ev[data-dl]').forEach(el => el.onclick = () => openDeadline(+el.dataset.dl));
   $$('#week .ev[data-e]').forEach(el => el.onclick = () => { const e = EV[+el.dataset.e]; if (e.subj) openSub(SUB.indexOf(e.subj)); });
 }
 $('#wkPrev').onclick = () => { wk = addDays(wk, -7); renderWeek(); };
@@ -654,11 +692,14 @@ function renderSubjects() {
 function openSub(i) {
   const s = SUB[i], t = teachers(s), up = EV.filter(e => e.subj === s && e.start > new Date()).slice(0, 5);
   const L = (u, l) => u ? `<a href="${esc(u)}" target="_blank" rel="noopener">${l}<span class="circle w">${ARR}</span></a>` : `<span>${l}: link da aggiungere</span>`;
+  $('#drawer .dr-top .tag').textContent = 'Materia';
   const P = s.programma || [], B = s.bibliografia || [];
+  const sDL = upcomingDL().filter(d => d.subject === s.name);
   const used = absGet(s.name), max = absMax(s);
   $('#drBody').innerHTML = `<h3 id="drTitle">${esc(s.name)}</h3>
     <div class="tags"><span class="tag ${s.tipo === 'Caratterizzante' ? 'red' : ''}" ${s.tipo === 'Caratterizzante' ? 'style="background:var(--red)"' : ''}>${esc(s.tipo)}</span><span class="tag">${s.cfa} crediti</span><span class="tag">${s.ore} ore</span><span class="tag">${s.sem === 'I/II' ? 'Annuale' : s.sem + ' semestre'}</span></div>
     <div class="dr-links three" style="margin-bottom:10px">${L(s.moodle, 'Moodle')}${L(s.drive, 'Drive')}${L(s.pdf, 'Programma')}</div>
+    ${sDL.length ? `<div class="dr-box"><h6>Consegne in arrivo</h6><div class="dlist">${sDL.map(d => `<div class="dli" data-dl="${DL.indexOf(d)}"><div><b>${esc(d.title)}</b><span>${esc(whenTxt(d))}</span></div><span class="when">${untilTxt(d.at - new Date())}</span></div>`).join('')}</div></div>` : ''}
     <div class="dr-box"><h6>Docenti</h6><p class="txt">${esc(s.docenti || t.join(', ') || 'Da confermare')}</p></div>
     <div class="dr-box"><h6>Prossime lezioni</h6>${up.length ? `<ul class="tl">${up.map(e => `<li><b>${cap(fDay.format(e.start))}, ${fT.format(e.start)}–${fT.format(e.end)}</b><span>${esc([e.unit, place(e)].filter(Boolean).join(' · '))}</span></li>`).join('')}</ul>` : '<p class="note">Nessuna lezione in calendario per ora.</p>'}</div>
     <div class="dr-box"><h6>Le tue assenze</h6><p class="txt"><b style="color:${used > max ? 'var(--red)' : '#fff'}">${fmtH(used)}</b> su un massimo di ${fmtH(max)}. ${used > max ? 'Hai superato il limite.' : 'Ti restano ' + fmtH(max - used) + '.'}</p></div>
@@ -667,6 +708,7 @@ function openSub(i) {
     <div class="dr-box"><h6>Esame</h6><p class="txt">${esc(s.valutazione || s.esame)}</p></div>
     ${B.length ? `<div class="dr-box"><h6>Testi</h6><ul class="bib">${B.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>` : ''}
     ${s.note ? `<div class="dr-box"><h6>Note</h6><p class="txt">${esc(s.note)}</p></div>` : ''}`;
+  $$('#drBody .dli').forEach(x => x.onclick = () => openDeadline(+x.dataset.dl));
   $('#drawer').classList.add('on'); $('#scrim').classList.add('on'); $('#drClose').focus();
 }
 const closeDr = () => { $('#drawer').classList.remove('on'); $('#scrim').classList.remove('on'); };
@@ -733,6 +775,7 @@ const IDX = [
   ...SUB.map((s, i) => ({t: s.name, k: 'Materia', q: [s.name, s.note, s.esame, s.tipo, ...teachers(s)].join(' '), go: () => openSub(i)})),
   ...D.faq.map((f, i) => ({t: f.q, k: 'Domanda', q: f.q + ' ' + f.a, go: () => { if (rv !== 'faq') $('#ruleTabs button[data-v=faq]').click(); const el = $$('.qa details')[i]; el.open = true; el.scrollIntoView({block:'center', behavior:'smooth'}); }})),
   ...D.docs.map(d => ({t: d.name, k: 'Documento', q: d.name + ' ' + d.note + ' ' + d.ver, go: () => { $('#ruleTabs button[data-v=docs]').click(); $('#regole').scrollIntoView({behavior:'smooth'}); }})),
+  ...DL.map((d, i) => ({t: d.title, k: 'Consegna, ' + whenTxt(d), q: [d.title, d.subject, d.note].join(' '), go: () => openDeadline(i)})),
   ...D.links.map(l => ({t: l.name, k: 'Link', q: l.name + ' ' + l.desc, go: () => window.open(l.url, '_blank', 'noopener')})),
   ...EV.filter(e => !e.allDay && e.start > new Date()).slice(0, 40).map(e => ({t: e.name + (e.unit ? ', ' + e.unit.toLowerCase() : ''), k: cap(fDS.format(e.start)) + ', ' + fT.format(e.start), q: [e.name, e.who, e.room, e.site].join(' '), go: () => { wk = monday(dayKey(e.start)); renderWeek(); $('#settimana').scrollIntoView({behavior:'smooth'}); }}))
 ];

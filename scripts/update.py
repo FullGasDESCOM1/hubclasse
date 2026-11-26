@@ -72,7 +72,7 @@ def notion_rows(db, token):
         res = json.loads(get(f"https://api.notion.com/v1/databases/{db}/query",
                              {"Authorization": f"Bearer {token}", "Notion-Version": "2022-06-28",
                               "Content-Type": "application/json"}, json.dumps(body).encode()))
-        rows += [{k: val(v) for k, v in r["properties"].items()} for r in res["results"]]
+        rows += [{"_id": r["id"], **{k: val(v) for k, v in r["properties"].items()}} for r in res["results"]]
         if not res.get("has_more"): return rows
         cursor = res["next_cursor"]
 
@@ -82,6 +82,7 @@ def val(p):
     if t in ("select", "status"): return (p[t] or {}).get("name")
     if t == "date": return (p["date"] or {}).get("start")
     if t in ("url", "email", "number", "checkbox"): return p[t]
+    if t == "relation": return [x["id"] for x in p["relation"]]
     return None
 
 SEM_ORDER = {"I": 0, "I/II": 1, "II": 2}
@@ -101,8 +102,10 @@ def from_notion(data, token):
             "programma": lines(r.get("Programma")), "valutazione": r.get("Valutazione") or "",
             "bibliografia": lines(r.get("Bibliografia"))} for r in m if r.get("Materia")],
             key=lambda s: (SEM_ORDER.get(s["sem"], 3), -s["cfa"], s["name"]))
-    data["deadlines"] = [{"title": r["Cosa"], "date": r["Data"], "type": r.get("Tipo"), "url": r.get("Link")}
-                         for r in notion_rows(NOTION_DB["scadenze"], token) if r.get("Cosa") and r.get("Data")]
+    names = {r["_id"]: r["Materia"] for r in m if r.get("Materia")}
+    data["deadlines"] = sorted([{"title": r["Cosa"], "date": r["Data"], "type": r.get("Tipo") or "Consegna", "url": r.get("Link"),
+                          "note": r.get("Note") or "", "subject": next((names[i] for i in (r.get("Materia") or []) if i in names), None)}
+                         for r in notion_rows(NOTION_DB["scadenze"], token) if r.get("Cosa") and r.get("Data")], key=lambda d: d["date"])
     data["news"] = sorted([{"date": (r.get("Data") or "")[:10], "title": r["Avviso"], "text": r.get("Testo") or "",
                             "source": r.get("Fonte") or "Classe", "important": r.get("Priorità") == "Importante" or bool(r.get("In evidenza")),
                             "url": r.get("Link")} for r in notion_rows(NOTION_DB["avvisi"], token) if r.get("Avviso") and r.get("Data")],
