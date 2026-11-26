@@ -1,0 +1,43 @@
+name: Aggiorna il sito
+
+on:
+  schedule:
+    - cron: "7 * * * *"   # ogni ora, al minuto 7
+  workflow_dispatch:      # pulsante "Run workflow" per aggiornare subito
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Prende i dati e genera il sito
+        run: python scripts/update.py
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

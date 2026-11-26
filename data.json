@@ -1,0 +1,423 @@
+{
+ "generatedAt": "2026-11-26T10:28:24Z",
+ "links": [
+  {
+   "name": "Campus",
+   "desc": "Carriera, esami, certificati",
+   "url": "https://campus.ied.it/auth/Logon.do"
+  },
+  {
+   "name": "Moodle",
+   "desc": "Corsi, materiali e consegne",
+   "url": "https://learn.ied.it/login/index.php?loginredirect=1"
+  },
+  {
+   "name": "Orario",
+   "desc": "Aggiungi le lezioni al tuo calendario",
+   "url": "webcal://ied.prod.up.cineca.it/api/FiltriICal/impegniICal?id=6aed9deaf488cc0014c74dcc"
+  },
+  {
+   "name": "Segreteria",
+   "desc": "Servizi agli studenti",
+   "url": "https://www.ied.it/studenti"
+  }
+ ],
+ "subjects": [
+  {
+   "name": "Graphic Design",
+   "key": "GRAPHIC DESIGN",
+   "cfa": 8,
+   "ore": 80,
+   "sem": "I/II",
+   "tipo": "Caratterizzante",
+   "esame": "Progetto o elaborato finale",
+   "note": "UI design con Figma, due unità da 40 ore.",
+   "moodle": null,
+   "drive": null
+  },
+  {
+   "name": "Metodologia della progettazione",
+   "key": "METODOLOGIA DELLA PROGETTAZIONE",
+   "cfa": 8,
+   "ore": 80,
+   "sem": "I",
+   "tipo": "Base",
+   "esame": "Progetto o elaborato finale",
+   "note": "Propedeutica a Design 1 del secondo anno. Include il modulo Design Process.",
+   "moodle": null,
+   "drive": null
+  },
+  {
+   "name": "Storia dell'arte contemporanea",
+   "key": "STORIA DELL'ARTE CONTEMPORANEA",
+   "cfa": 6,
+   "ore": 36,
+   "sem": "I",
+   "tipo": "Base",
+   "esame": "Scritto e orale",
+   "note": "All'esame si presenta una ricerca.",
+   "moodle": null,
+   "drive": null
+  },
+  {
+   "name": "Storia e teoria dei nuovi media",
+   "key": "STORIA E TEORIA DEI NUOVI MEDIA",
+   "cfa": 4,
+   "ore": 24,
+   "sem": "I",
+   "tipo": "Affine",
+   "esame": "Prova scritta ed elaborato finale",
+   "note": "Lezioni da ottobre a febbraio.",
+   "moodle": null,
+   "drive": null
+  },
+  {
+   "name": "Fondamenti di marketing culturale",
+   "key": "FONDAMENTI DI MARKETING CULTURALE",
+   "cfa": 8,
+   "ore": 48,
+   "sem": "I/II",
+   "tipo": "Affine",
+   "esame": "Prova scritta o orale",
+   "note": "Project management, leadership, design thinking.",
+   "moodle": null,
+   "drive": null
+  },
+  {
+   "name": "Seminari interdisciplinari",
+   "key": "SEMINARI",
+   "cfa": 4,
+   "ore": 40,
+   "sem": "I",
+   "tipo": "Ulteriori",
+   "esame": "Da verificare",
+   "note": "Nel piano di studi compaiono due righe da 2 crediti, una con esame e una con idoneità.",
+   "moodle": null,
+   "drive": null
+  },
+  {
+   "name": "Metodologia progettuale della comunicazione visiva 1",
+   "key": "METODOLOGIA PROGETTUALE",
+   "cfa": 10,
+   "ore": 100,
+   "sem": "II",
+   "tipo": "Caratterizzante",
+   "esame": "Progetto o elaborato finale",
+   "note": "Branding, visual design, copywriting e content creation. Propedeutica a Metodologia progettuale 2.",
+   "moodle": null,
+   "drive": null
+  },
+  {
+   "name": "Computer Graphic",
+   "key": "COMPUTER GRAPHIC",
+   "cfa": 8,
+   "ore": 80,
+   "sem": "II",
+   "tipo": "Base",
+   "esame": "Progetto o elaborato finale",
+   "note": "Photoshop e Illustrator. Lezioni da marzo a giugno.",
+   "moodle": null,
+   "drive": null
+  },
+  {
+   "name": "Semiotica dell'arte",
+   "key": "SEMIOTICA",
+   "cfa": 4,
+   "ore": 24,
+   "sem": "II",
+   "tipo": "Affine",
+   "esame": "Prova intermedia e consegna elaborato",
+   "note": "Lezioni da marzo a giugno.",
+   "moodle": null,
+   "drive": null
+  }
+ ],
+ "events": [
+  [
+   "2026-11-23T14:15:00Z",
+   "2026-11-23T17:15:00Z",
+   "GRAPHIC DESIGN - UNITA' DIDATTICA 1",
+   "ROOM 7 - Torino San Quintino 39",
+   "DA SILVA NICODEMOS LUIZA"
+  ],
+  [
+   "2026-11-24T10:45:00Z",
+   "2026-11-24T13:45:00Z",
+   "STORIA E TEORIA DEI NUOVI MEDIA",
+   "ROOM 7 - Torino San Quintino 39",
+   "BERNOCCHI ROBERTO"
+  ],
+  [
+   "2026-11-26T14:15:00Z",
+   "2026-11-26T17:15:00Z",
+   "GRAPHIC DESIGN - UNITA' DIDATTICA 2",
+   "ROOM 105 - Torino Nizza 18",
+   "CASTAGNOLA RUGGERO"
+  ],
+  [
+   "2026-11-27T07:30:00Z",
+   "2026-11-27T10:30:00Z",
+   "METODOLOGIA DELLA PROGETTAZIONE - UNITA' DIDATTICA 1",
+   "ROOM 7 - Torino San Quintino 39",
+   "GUI DAMIANO"
+  ],
+  [
+   "2026-11-27T10:45:00Z",
+   "2026-11-27T13:45:00Z",
+   "STORIA DELL'ARTE CONTEMPORANEA",
+   "ROOM 8 - Torino San Quintino 39",
+   "FOLLINI BERNARDO MARIA"
+  ],
+  [
+   "2026-11-30T10:45:00Z",
+   "2026-11-30T13:45:00Z",
+   "METODOLOGIA DELLA PROGETTAZIONE - UNITA' DIDATTICA 1",
+   "ROOM 9 - Torino San Quintino 39",
+   "GUI DAMIANO"
+  ],
+  [
+   "2026-12-01T09:00:00Z",
+   "2026-12-01T10:30:00Z",
+   "Presentazione Mobility - Design della Comunicazione",
+   "ROOM 303 - Torino Nizza 18",
+   ""
+  ],
+  [
+   "2026-12-01T14:15:00Z",
+   "2026-12-01T17:15:00Z",
+   "METODOLOGIA DELLA PROGETTAZIONE - UNITA' DIDATTICA 1",
+   "ROOM 101 - Torino Nizza 18",
+   "GUI DAMIANO"
+  ],
+  [
+   "2026-12-02T10:00:00Z",
+   "2026-12-02T14:00:00Z",
+   "METODOLOGIA DELLA PROGETTAZIONE - UNITA' DIDATTICA 2",
+   "ROOM 403 - Torino Nizza 18",
+   "ZORATTI CARLO"
+  ],
+  [
+   "2026-12-02T14:00:00Z",
+   "2026-12-02T17:00:00Z",
+   "METODOLOGIA DELLA PROGETTAZIONE - UNITA' DIDATTICA 2",
+   "ROOM 403 - Torino Nizza 18",
+   "ZORATTI CARLO"
+  ],
+  [
+   "2026-12-04T07:30:00Z",
+   "2026-12-04T10:30:00Z",
+   "GRAPHIC DESIGN - UNITA' DIDATTICA 1",
+   "ROOM 1 - Torino San Quintino 39",
+   "DA SILVA NICODEMOS LUIZA"
+  ],
+  [
+   "2026-12-04T10:45:00Z",
+   "2026-12-04T13:45:00Z",
+   "FONDAMENTI DI MARKETING CULTURALE",
+   "ROOM 8 - Torino San Quintino 39",
+   "GALLINA FILIPPO GIUSEPPE"
+  ],
+  [
+   "2026-12-06T23:00:00Z",
+   "2026-12-07T22:59:59Z",
+   "Immacolata",
+   "",
+   ""
+  ],
+  [
+   "2026-12-07T23:00:00Z",
+   "2026-12-08T22:59:59Z",
+   "Immacolata",
+   "",
+   ""
+  ],
+  [
+   "2026-12-09T10:45:00Z",
+   "2026-12-09T13:45:00Z",
+   "METODOLOGIA DELLA PROGETTAZIONE - UNITA' DIDATTICA 1",
+   "ROOM 7 - Torino San Quintino 39",
+   "GUI DAMIANO"
+  ],
+  [
+   "2026-12-10T07:30:00Z",
+   "2026-12-10T10:30:00Z",
+   "GRAPHIC DESIGN - UNITA' DIDATTICA 1",
+   "ROOM 304 - Torino Nizza 18",
+   "DA SILVA NICODEMOS LUIZA"
+  ],
+  [
+   "2026-12-10T14:15:00Z",
+   "2026-12-10T17:15:00Z",
+   "GRAPHIC DESIGN - UNITA' DIDATTICA 2",
+   "ROOM 302 - Torino Nizza 18",
+   "CASTAGNOLA RUGGERO"
+  ],
+  [
+   "2026-12-11T07:30:00Z",
+   "2026-12-11T10:30:00Z",
+   "STORIA DELL'ARTE CONTEMPORANEA",
+   "ROOM 8 - Torino San Quintino 39",
+   "FOLLINI BERNARDO MARIA"
+  ],
+  [
+   "2026-12-11T10:45:00Z",
+   "2026-12-11T13:45:00Z",
+   "FONDAMENTI DI MARKETING CULTURALE",
+   "ROOM 8 - Torino San Quintino 39",
+   "GALLINA FILIPPO GIUSEPPE"
+  ],
+  [
+   "2026-12-14T14:15:00Z",
+   "2026-12-14T17:15:00Z",
+   "GRAPHIC DESIGN - UNITA' DIDATTICA 1",
+   "ROOM 2 - Torino San Quintino 39",
+   "DA SILVA NICODEMOS LUIZA"
+  ],
+  [
+   "2026-12-15T07:30:00Z",
+   "2026-12-15T10:30:00Z",
+   "GRAPHIC DESIGN - UNITA' DIDATTICA 2",
+   "ROOM 4 - Torino San Quintino 39",
+   "CASTAGNOLA RUGGERO"
+  ],
+  [
+   "2026-12-15T14:15:00Z",
+   "2026-12-15T17:15:00Z",
+   "STORIA E TEORIA DEI NUOVI MEDIA",
+   "ROOM 6 - Torino San Quintino 39",
+   "BERNOCCHI ROBERTO"
+  ],
+  [
+   "2026-12-16T07:30:00Z",
+   "2026-12-16T10:30:00Z",
+   "STORIA DELL'ARTE CONTEMPORANEA",
+   "AULA MAGNA - Torino San Quintino 39",
+   "FOLLINI BERNARDO MARIA"
+  ],
+  [
+   "2026-12-16T10:45:00Z",
+   "2026-12-16T13:45:00Z",
+   "METODOLOGIA DELLA PROGETTAZIONE - UNITA' DIDATTICA 2",
+   "ROOM 8 - Torino San Quintino 39",
+   "ZORATTI CARLO"
+  ],
+  [
+   "2026-12-16T14:15:00Z",
+   "2026-12-16T17:15:00Z",
+   "METODOLOGIA DELLA PROGETTAZIONE - UNITA' DIDATTICA 2",
+   "ROOM 8 - Torino San Quintino 39",
+   "ZORATTI CARLO"
+  ],
+  [
+   "2026-12-17T14:15:00Z",
+   "2026-12-17T17:15:00Z",
+   "GRAPHIC DESIGN - UNITA' DIDATTICA 2",
+   "ROOM 304 - Torino Nizza 18",
+   "CASTAGNOLA RUGGERO"
+  ],
+  [
+   "2026-12-18T07:30:00Z",
+   "2026-12-18T10:30:00Z",
+   "STORIA DELL'ARTE CONTEMPORANEA",
+   "ROOM 8 - Torino San Quintino 39",
+   "FOLLINI BERNARDO MARIA"
+  ],
+  [
+   "2026-12-18T10:45:00Z",
+   "2026-12-18T13:45:00Z",
+   "FONDAMENTI DI MARKETING CULTURALE",
+   "ROOM 8 - Torino San Quintino 39",
+   "GALLINA FILIPPO GIUSEPPE"
+  ]
+ ],
+ "deadlines": [],
+ "news": [
+  {
+   "date": "2026-11-26",
+   "title": "Esempio: cambio aula per Graphic Design",
+   "text": "Così apparirà un avviso arrivato dalla mail istituzionale. Gli avvisi veri arrivano qui ogni ora quando colleghiamo Gmail.",
+   "source": "Mail",
+   "important": true,
+   "example": true
+  },
+  {
+   "date": "2026-11-25",
+   "title": "Esempio: nuovi materiali su Moodle",
+   "text": "Quando un docente carica un file, compare qui con la materia e il link diretto.",
+   "source": "Moodle",
+   "important": false,
+   "example": true
+  }
+ ],
+ "docs": [
+  {
+   "name": "Regolamento didattico del triennio",
+   "cat": "Regolamento",
+   "ver": "REG 8204, rev. 3",
+   "note": "Frequenza, esami, progressione, rappresentanze.",
+   "url": null
+  },
+  {
+   "name": "Regolamento generale triennali",
+   "cat": "Regolamento",
+   "ver": "REG 8203, rev. 7",
+   "note": "Iscrizione, pagamenti, rinunce.",
+   "url": null
+  },
+  {
+   "name": "Appendice amministrativa",
+   "cat": "Regolamento",
+   "ver": "Allegato al REG 8203",
+   "note": "Importi e scadenze amministrative.",
+   "url": null
+  },
+  {
+   "name": "Regolamento disciplinare",
+   "cat": "Regolamento",
+   "ver": "REG 8205, rev. 2",
+   "note": "Norme di comportamento, segnalazioni, procedure.",
+   "url": null
+  },
+  {
+   "name": "Handbook Design della Comunicazione",
+   "cat": "Handbook",
+   "ver": "A.A. 2026/27",
+   "note": "Piano di studi, schede degli insegnamenti, propedeuticità.",
+   "url": null
+  },
+  {
+   "name": "Presentazione primo anno",
+   "cat": "Presentazione",
+   "ver": "A.A. 2026/27",
+   "note": "Le slide dell'incontro di inizio anno.",
+   "url": null
+  }
+ ],
+ "faq": [
+  {
+   "q": "Quante assenze si possono fare?",
+   "a": "La frequenza è obbligatoria per l'80% delle ore di ogni insegnamento. Oltre la soglia, per gravi motivi, si presenta il modulo in segreteria didattica e decide il Coordinatore Accademico.",
+   "src": "Regolamento didattico, art. 5.7 e 5.8"
+  },
+  {
+   "q": "Quando si supera un esame?",
+   "a": "Con almeno 18/30 o un'idoneità. Se sei assente per un motivo grave, serve una domanda scritta con documenti entro 7 giorni di calendario dall'esame.",
+   "src": "Regolamento didattico, art. 18.12 e 18.9"
+  },
+  {
+   "q": "Quanti crediti servono per il secondo anno?",
+   "a": "40 crediti.",
+   "src": "Regolamento didattico, art. 22.1"
+  },
+  {
+   "q": "Come si chiede un certificato?",
+   "a": "Iscrizione e frequenza si chiedono alla segreteria. Le autocertificazioni si stampano da IED Campus, area Segreteria.",
+   "src": "Regolamento didattico, art. 3.1 e 3.2"
+  },
+  {
+   "q": "Dove arrivano le comunicazioni ufficiali?",
+   "a": "Sulla casella email istituzionale, da controllare regolarmente.",
+   "src": "Regolamento generale, art. 21.1"
+  }
+ ]
+}
