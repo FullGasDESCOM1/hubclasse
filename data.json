@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-26T11:37:14Z",
+ "generatedAt": "2026-11-27T03:59:57Z",
  "links": [
   {
    "name": "Campus",
@@ -28,72 +28,291 @@
    "key": "GRAPHIC DESIGN",
    "cfa": 8,
    "ore": 80,
-   "sem": "I/II",
+   "sem": "I",
    "tipo": "Caratterizzante",
-   "esame": "Progetto o elaborato finale",
-   "note": "UI design con Figma, due unità da 40 ore.",
+   "esame": "Progetto (unità 1) + prova scritta (unità 2)",
+   "note": "Due unità da 40 ore. Verifiche intermedie durante il corso.",
    "moodle": null,
-   "drive": null
+   "drive": null,
+   "pdf": null,
+   "docenti": "Luiza Da Silva Nicodemos (unità 1, UI design e Figma), Ruggero Castagnola (unità 2, prodotti digitali)",
+   "obiettivi": "Imparare Figma e i principi della grafica per il digitale (composizione, tipografia, colore, griglia, gerarchia visiva) per progettare interfacce responsive. Capire come funzionano i prodotti digitali e la logica che sta dietro un'interfaccia.",
+   "programma": [
+    "§ Unità 1, UI design e Figma (Nicodemos)",
+    "Introduzione: dal fisico al digitale, primi passi in Figma",
+    "Colore e tipografia, con una breve storia del design grafico moderno",
+    "Composizione: equilibrio, gerarchia, ritmo, spazio (due esercitazioni)",
+    "Griglie, wireframe, architettura dell'informazione e sitemap",
+    "Metodologia human-centered, gerarchia visiva e design system",
+    "Progetto finale: interfaccia desktop e mobile, con revisioni",
+    "§ Unità 2, prodotti digitali (Castagnola)",
+    "La rivoluzione informatica e cos'è un prodotto digitale",
+    "Pensiero computazionale: input, processo, output",
+    "Procedure e algoritmi",
+    "Diagrammi di flusso (tre lezioni)",
+    "Variabili, condizioni e cicli",
+    "I dati nei prodotti digitali",
+    "Analizzare un prodotto digitale",
+    "Infrastrutture e futuro del digitale",
+    "Simulazione e compito finale"
+   ],
+   "valutazione": "Unità 1: ideazione e progetto di un'interfaccia digitale, mobile e desktop.\nUnità 2: prova scritta, preceduta da una simulazione nelle ultime lezioni.",
+   "bibliografia": [
+    "Josef Müller-Brockmann, The grid system",
+    "Timothy Samara, Progettare con e senza griglia",
+    "Ellen Lupton, Thinking with type",
+    "Robert Bringhurst, Gli elementi dello stile tipografico",
+    "John Maeda, How to speak machine",
+    "Ferragina e Luccio, Il pensiero computazionale",
+    "Marty Cagan, Inspired"
+   ],
+   "links": [
+    {
+     "label": "Moodle Nicodemos",
+     "url": "https://learn.ied.it/course/view.php?id=6481"
+    },
+    {
+     "label": "Moodle Castagnola",
+     "url": "https://learn.ied.it/course/view.php?id=6482"
+    }
+   ]
   },
   {
    "name": "Metodologia della progettazione",
-   "key": "METODOLOGIA DELLA PROGETTAZIONE",
+   "key": "METODOLOGIA DELLA",
    "cfa": 8,
    "ore": 80,
    "sem": "I",
    "tipo": "Base",
-   "esame": "Progetto o elaborato finale",
-   "note": "Propedeutica a Design 1 del secondo anno. Include il modulo Design Process.",
+   "esame": "Progetto finale + prove in itinere",
+   "note": "Propedeutica a Design 1 (2° anno). Include il modulo Design Process.",
    "moodle": null,
-   "drive": null
+   "drive": null,
+   "pdf": null,
+   "docenti": "Carlo Zoratti (pensiero creativo), Damiano Gui (Design Process)",
+   "obiettivi": "Gestire il proprio processo creativo alternando una fase di esplorazione libera e una di analisi critica. Affrontare problemi complessi con i metodi del design, da soli e in gruppo, collegando idee e informazioni invece di memorizzare nozioni.",
+   "programma": [
+    "§ Pensiero creativo (Zoratti)",
+    "L'immaginazione: come la mente produce idee",
+    "Il processo creativo in due fasi: esplorazione e ricerca",
+    "Esplorazione: soggettività, piacere e il giudizio che blocca",
+    "Ricerca: oggettività, modelli mentali, argomentazione",
+    "Alternare le due fasi e sviluppo di un progetto creativo",
+    "§ Design Process (Gui)",
+    "Cos'è il design: breve storia e discipline",
+    "Il design secondo Bruno Munari",
+    "Design thinking: cos'è e come si applica",
+    "Brainstorming, divergenza e convergenza",
+    "Tecniche: crazy-8, mash-up, lotus blossom, how might we, card sorting, brain writing, paper prototyping",
+    "Csikszentmihalyi: creatività e flow",
+    "Ricerca qualitativa e quantitativa",
+    "Le personas",
+    "Don Norman: da human a humanity-centered design"
+   ],
+   "valutazione": "Progetto o elaborato finale, con prove in itinere durante il corso. Metodo learning by doing: molto lavoro pratico, anche in gruppo.",
+   "bibliografia": [
+    "Bruno Munari, Da cosa nasce cosa",
+    "Victor Papanek, Design per il mondo reale",
+    "Mihaly Csikszentmihalyi, Creatività",
+    "Mihaly Csikszentmihalyi, Flow",
+    "Don Norman, La caffettiera del masochista",
+    "Don Norman, Design per un mondo migliore",
+    "Gray, Brown, Macanufo, Gamestorming",
+    "Dispense dei docenti"
+   ],
+   "links": [
+    {
+     "label": "Moodle Gui",
+     "url": "https://learn.ied.it/course/view.php?id=6506"
+    },
+    {
+     "label": "Moodle Zoratti",
+     "url": "https://learn.ied.it/course/view.php?id=6507"
+    }
+   ]
   },
   {
    "name": "Storia dell'arte contemporanea",
-   "key": "STORIA DELL'ARTE CONTEMPORANEA",
+   "key": "STORIA DELL'ARTE",
    "cfa": 6,
    "ore": 36,
    "sem": "I",
    "tipo": "Base",
-   "esame": "Scritto e orale",
-   "note": "All'esame si presenta una ricerca.",
-   "moodle": null,
-   "drive": null
-  },
-  {
-   "name": "Storia e teoria dei nuovi media",
-   "key": "STORIA E TEORIA DEI NUOVI MEDIA",
-   "cfa": 4,
-   "ore": 24,
-   "sem": "I",
-   "tipo": "Affine",
-   "esame": "Prova scritta ed elaborato finale",
-   "note": "Lezioni da ottobre a febbraio.",
-   "moodle": null,
-   "drive": null
-  },
-  {
-   "name": "Fondamenti di marketing culturale",
-   "key": "FONDAMENTI DI MARKETING CULTURALE",
-   "cfa": 8,
-   "ore": 48,
-   "sem": "I/II",
-   "tipo": "Affine",
-   "esame": "Prova scritta o orale",
-   "note": "Project management, leadership, design thinking.",
-   "moodle": null,
-   "drive": null
+   "esame": "Scritto (consegna 10 giorni prima) + orale",
+   "note": "Lezioni ottobre–febbraio. Si presenta una ricerca all'esame.",
+   "moodle": "https://learn.ied.it/course/view.php?id=6503",
+   "drive": null,
+   "pdf": null,
+   "docenti": "Bernardo Follini",
+   "obiettivi": "Conoscere le avanguardie e il loro contesto senza studiare a memoria nomi e date. Riconoscerne l'eredità in pubblicità, design, moda e cinema. Saper scrivere una recensione, un report o un comunicato su una mostra o un'opera, e saper parlare d'arte.",
+   "programma": [
+    "Introduzione: guardare l'arte oggi, Duchamp e il cambio di paradigma",
+    "Storia sociale dell'arte I: Futurismo, Costruttivismo, Dada",
+    "Strutturalismi I: Cubismo, Suprematismo, De Stijl",
+    "Psicanalisi e arte I: Surrealismo, arte degenerata",
+    "Storia sociale dell'arte II: Situazionisti, Muralismo messicano, Arte povera",
+    "Strutturalismi II: Greenberg ed Espressionismo astratto",
+    "Poststrutturalismo I: Pop art, New Dada, Minimalismo",
+    "Poststrutturalismo II: arte concettuale, critica istituzionale, Land Art",
+    "Psicanalisi e arte II: femminismo, arte e AIDS, postumano",
+    "Corpo e performance: Fluxus, Azionismo viennese, pratiche relazionali",
+    "Perché non ci sono state grandi artiste? Le mostre del Castello di Rivoli",
+    "Orientalismi e politiche identitarie"
+   ],
+   "valutazione": "Scritto: un testo di massimo 3500 battute che collega tre artisti di generazioni diverse (1900–1960, 1960–1990, 1990–2020) con un criterio a tua scelta. Va consegnato stampato, con immagini, crediti e bibliografia, 10 giorni prima dell'esame.\nOrale: presenti il testo e rispondi a domande sui temi del corso. Il voto è unico.",
+   "bibliografia": [
+    "Foster, Krauss, Bois, Buchloh, Arte dal 1900 (obbligatorio)",
+    "Hal Foster, Il ritorno del reale (obbligatorio)",
+    "Linda Nochlin, Perché non ci sono state grandi artiste? (obbligatorio)",
+    "Walter Benjamin, L'opera d'arte nell'epoca della sua riproducibilità tecnica",
+    "Nicolas Bourriaud, Postproduction",
+    "Brian O'Doherty, Inside the White Cube"
+   ],
+   "links": []
   },
   {
    "name": "Seminari interdisciplinari",
-   "key": "SEMINARI",
+   "key": "SEMINARI INTERDISCIPLINARI",
    "cfa": 4,
    "ore": 40,
    "sem": "I",
    "tipo": "Ulteriori",
-   "esame": "Da verificare",
-   "note": "Nel piano di studi compaiono due righe da 2 crediti, una con esame e una con idoneità.",
+   "esame": "Idoneità",
+   "note": "Due seminari da 2 crediti. Il primo è Scrittura creativa (20 ore, ottobre–febbraio). Il secondo è da confermare.",
    "moodle": null,
-   "drive": null
+   "drive": null,
+   "pdf": null,
+   "docenti": "Marco Enrico Giacomelli (Scrittura creativa)",
+   "obiettivi": "Scrittura creativa: riconoscere e gestire con consapevolezza i fondamentali del racconto.",
+   "programma": [
+    "§ Scrittura creativa (Giacomelli)",
+    "What if e punto di vista, in prima e terza persona",
+    "I personaggi: desiderio, difetto, segreto",
+    "Il mondo narrativo e la descrizione",
+    "La trama: incidente, svolte, climax, soluzione",
+    "Show don't tell e dialoghi",
+    "Incipit e chiusa",
+    "L'editing: a caccia di avverbi, aggettivi e luoghi comuni"
+   ],
+   "valutazione": "Scrittura creativa: prove in itinere con giudizio di idoneità, senza voto.",
+   "bibliografia": [
+    "John Gillard, Scrittura creativa, minimum fax",
+    "Raymond Carver, Il mestiere di scrivere, Einaudi"
+   ],
+   "links": []
+  },
+  {
+   "name": "Storia e teoria dei nuovi media",
+   "key": "STORIA E",
+   "cfa": 4,
+   "ore": 24,
+   "sem": "I",
+   "tipo": "Affine",
+   "esame": "Scritto + orale + video finale",
+   "note": "Lezioni ottobre–febbraio.",
+   "moodle": "https://learn.ied.it/course/view.php?id=6502",
+   "drive": null,
+   "pdf": null,
+   "docenti": "Roberto Bernocchi",
+   "obiettivi": "Avere un panorama della storia della pubblicità e dei media. Riconoscere tecniche e approcci creativi, analizzare campagne storiche con il linguaggio della professione e collegare ogni scelta creativa al suo contesto.",
+   "programma": [
+    "Le origini: stampa, manifesti e i primi pubblicitari",
+    "Primi decenni del Novecento e il cinema",
+    "Anni '30 e '40: la radio",
+    "Anni '50: la televisione e la rivoluzione creativa (Ogilvy, Bernbach)",
+    "Anni '60 e '70: la rivoluzione giovanile e la scena inglese",
+    "Anni '80: la pubblicità spettacolo e la scena francese",
+    "Anni '90: la rivoluzione digitale",
+    "La scena italiana, da Armando Testa a oggi",
+    "Laboratorio: realizzazione di un video"
+   ],
+   "valutazione": "Prova scritta con domande aperte e chiuse, orale integrativo ed elaborato finale (un video). Contano anche la partecipazione in aula e le ricerche portate dagli studenti.",
+   "bibliografia": [
+    "Roberto Bernocchi, Storia della pubblicità, UTET 2022",
+    "Slide del docente"
+   ],
+   "links": []
+  },
+  {
+   "name": "Computer Graphic",
+   "key": "COMPUTER GRAPHIC",
+   "cfa": 8,
+   "ore": 80,
+   "sem": "I/II",
+   "tipo": "Base",
+   "esame": "Progetto finale + prove in itinere",
+   "note": "Unità 1 Photoshop da ottobre a febbraio, unità 2 Illustrator da marzo a giugno.",
+   "moodle": null,
+   "drive": null,
+   "pdf": null,
+   "docenti": "Marco Lampis (unità 1, Photoshop), Paolo Cagliero (unità 2, Illustrator)",
+   "obiettivi": "Gestire ed elaborare immagini digitali e fotografiche con Photoshop, e disegnare in vettoriale con Illustrator per la stampa e il digitale.",
+   "programma": [
+    "§ Unità 1, Photoshop (Lampis)",
+    "Interfaccia e fotoritocco di base",
+    "Livelli, selezioni e compositing",
+    "Colore, metodi immagine e scontorni",
+    "Strumenti vettoriali, trasformazioni e metodi di fusione",
+    "Pennelli e colorazione, regolazioni colore",
+    "Risoluzione e ricampionamento",
+    "Prova in itinere in aula e formati di file",
+    "Filtri, testo, azioni automatiche",
+    "Maschere e stili di livello",
+    "Prova d'esame, poi prospettiva e ombre",
+    "§ Unità 2, Illustrator (Cagliero)",
+    "Vettoriale e raster, colore, risoluzioni, formati",
+    "Impostare un documento, tracciati e livelli",
+    "Testo e curve di Bézier",
+    "Isometria",
+    "Trasparenze e fusione colore",
+    "Prova in itinere",
+    "Guide, griglie e pattern",
+    "Filtri ed effetti",
+    "Esportazione e stampa, tema dell'esercitazione libera",
+    "Pennelli, gradient mesh e simboli",
+    "Revisione delle bozze finali"
+   ],
+   "valutazione": "Progetto o elaborato finale, con verifiche durante il corso.\nUnità 1: prova in itinere a metà corso e prova d'esame in aula.\nUnità 2: prova in itinere a metà corso ed esercitazione libera da presentare all'esame.",
+   "bibliografia": [
+    "Dispense e indicazioni dei docenti",
+    "Tutorial ufficiali di Adobe Illustrator"
+   ],
+   "links": []
+  },
+  {
+   "name": "Fondamenti di marketing culturale",
+   "key": "FONDAMENTI DI",
+   "cfa": 8,
+   "ore": 48,
+   "sem": "I/II",
+   "tipo": "Affine",
+   "esame": "Scritto + orale su un brief di progetto",
+   "note": "Project management, leadership, design thinking. Ottobre–giugno.",
+   "moodle": null,
+   "drive": null,
+   "pdf": null,
+   "docenti": "Filippo Giuseppe Gallina",
+   "obiettivi": "Avere strumenti pratici per gestire progetti di diversa complessità: organizzazione, governance e leadership.",
+   "programma": [
+    "Il mestiere del project manager: più che un mestiere, un'attitudine",
+    "Project management e storytelling: raccontare i progetti come storie",
+    "Lo Zen e l'arte del project management: calma, lucidità, strategia",
+    "Stili, principi e pilastri del project management, nuovi trend",
+    "Ruoli e stili di leadership: dal controllo all'empatia",
+    "Project management e design: co-creazione, empatia, sprint"
+   ],
+   "valutazione": "Esame scritto e orale: affronti il brief di un progetto con le tecniche del corso, compreso il racconto del progetto.",
+   "bibliografia": [
+    "Nessun testo obbligatorio. Tra quelli citati:",
+    "Joseph Campbell, L'eroe dai mille volti",
+    "Christopher Vogler, Il viaggio dell'eroe",
+    "Nancy Duarte, Resonate",
+    "Daniel Goleman, Intelligenza emotiva",
+    "Tim Brown, Change by Design",
+    "IDEO.org, The Field Guide to Human-Centered Design",
+    "PMI, PMBOK Guide"
+   ],
+   "links": []
   },
   {
    "name": "Metodologia progettuale della comunicazione visiva 1",
@@ -102,51 +321,74 @@
    "ore": 100,
    "sem": "II",
    "tipo": "Caratterizzante",
-   "esame": "Progetto o elaborato finale",
-   "note": "Branding, visual design, copywriting e content creation. Propedeutica a Metodologia progettuale 2.",
+   "esame": "4 Pit Stop + progetto finale",
+   "note": "Branding e visual design, copywriting e content creation. Propedeutica a Metodologia progettuale 2.",
    "moodle": null,
-   "drive": null
-  },
-  {
-   "name": "Computer Graphic",
-   "key": "COMPUTER GRAPHIC",
-   "cfa": 8,
-   "ore": 80,
-   "sem": "II",
-   "tipo": "Base",
-   "esame": "Progetto o elaborato finale",
-   "note": "Photoshop e Illustrator. Lezioni da marzo a giugno.",
-   "moodle": null,
-   "drive": null
+   "drive": null,
+   "pdf": null,
+   "docenti": "Pietro Paciullo (branding e visual design), Gabriella De Stefano (copywriting e content creation)",
+   "obiettivi": "Analizzare un brief e il suo contesto, leggere il brand come sistema, trovare insight e concept. Progettare naming, payoff, tono di voce e direzione visiva insieme, declinarli su più media e saper motivare e presentare le scelte.",
+   "programma": [
+    "§ Branding e visual design (Paciullo)",
+    "Fondamenti: analisi e decostruzione di una marca, target, posizionamento, segni e codici",
+    "Metodo: dal brief al concept, direzione visiva, sistema di identità",
+    "Laboratorio di progetto e revisioni",
+    "§ Copywriting e content creation (De Stefano)",
+    "Strategia: insight, concept, tono di voce, naming e payoff, l'AI come strumento",
+    "Scrittura per stampa, affissioni, radio, film, newsletter e brochure",
+    "Contenuti social, piano editoriale, web e microcopy",
+    "Progetto finale con brief condiviso con il branding"
+   ],
+   "valutazione": "Quattro Pit Stop durante il corso, verifiche che uniscono visual e copy: naming e logo, headline e visual, script e storyboard, social toolkit.\nProgetto finale interdisciplinare: concept, identità, campagna stampa e digital, script radio o film, social toolkit, landing page o activation.",
+   "bibliografia": [
+    "Müller e Wiedemann, The History of Graphic Design (Taschen)",
+    "Lupton e Phillips, Graphic Design: The New Basics",
+    "Josef Albers, Interaction of Color",
+    "Alina Wheeler, Designing Brand Identity",
+    "D&AD, The Copy Book",
+    "Dan Nelken, Manuale di sopravvivenza per copywriter",
+    "Annamaria Testa, La parola immaginata",
+    "Siti: Brand New, Eye on Design, Identity Designed"
+   ],
+   "links": []
   },
   {
    "name": "Semiotica dell'arte",
-   "key": "SEMIOTICA",
+   "key": "SEMIOTICA DELL'ARTE",
    "cfa": 4,
    "ore": 24,
    "sem": "II",
    "tipo": "Affine",
-   "esame": "Prova intermedia e consegna elaborato",
-   "note": "Lezioni da marzo a giugno.",
+   "esame": "Prova intermedia + elaborato",
+   "note": "Lezioni marzo–giugno.",
    "moodle": null,
-   "drive": null
+   "drive": null,
+   "pdf": null,
+   "docenti": "Francesco Tenaglia",
+   "obiettivi": "Diventare più consapevoli delle forme della comunicazione e delle loro grammatiche, e saper scegliere e usare gli strumenti giusti per analizzare un'immagine.",
+   "programma": [
+    "I segni del visivo: icona, indice, simbolo (Peirce, Eco)",
+    "Livelli di significazione: denotazione, connotazione, miti (Barthes, Goodman)",
+    "Codici culturali e tradizione: iconologia, parola e immagine (Panofsky, Schapiro)",
+    "Spazio e contesto: campo espanso ed eterotopie (Krauss, Foucault)",
+    "Il corpo come medium (Sontag, Amelia Jones)",
+    "Algoritmi e nuovi media (Flusser, Manovich)",
+    "Tre lezioni di esercitazione per preparare l'elaborato d'esame"
+   ],
+   "valutazione": "Prova intermedia e consegna di un elaborato, preparato nelle tre lezioni di esercitazione.",
+   "bibliografia": [
+    "Estratti in italiano da:",
+    "Peirce, Semiotica",
+    "Umberto Eco, La struttura assente",
+    "Roland Barthes, L'ovvio e l'ottuso",
+    "Erwin Panofsky, Studi di iconologia",
+    "Susan Sontag, Contro l'interpretazione",
+    "Lev Manovich, Il linguaggio dei nuovi media"
+   ],
+   "links": []
   }
  ],
  "events": [
-  [
-   "2026-11-23T14:15:00Z",
-   "2026-11-23T17:15:00Z",
-   "GRAPHIC DESIGN - UNITA' DIDATTICA 1",
-   "ROOM 7 - Torino San Quintino 39",
-   "DA SILVA NICODEMOS LUIZA"
-  ],
-  [
-   "2026-11-24T10:45:00Z",
-   "2026-11-24T13:45:00Z",
-   "STORIA E TEORIA DEI NUOVI MEDIA",
-   "ROOM 7 - Torino San Quintino 39",
-   "BERNOCCHI ROBERTO"
-  ],
   [
    "2026-11-26T14:15:00Z",
    "2026-11-26T17:15:00Z",
@@ -157,7 +399,7 @@
   [
    "2026-11-27T07:30:00Z",
    "2026-11-27T10:30:00Z",
-   "METODOLOGIA DELLA PROGETTAZIONE - UNITA' DIDATTICA 1",
+   "METODOLOGIA DELLA PROGETTAZIONE - UNITA' DIDATTICA  1",
    "ROOM 7 - Torino San Quintino 39",
    "GUI DAMIANO"
   ],
@@ -171,9 +413,16 @@
   [
    "2026-11-30T10:45:00Z",
    "2026-11-30T13:45:00Z",
-   "METODOLOGIA DELLA PROGETTAZIONE - UNITA' DIDATTICA 1",
+   "METODOLOGIA DELLA PROGETTAZIONE - UNITA' DIDATTICA  1",
    "ROOM 9 - Torino San Quintino 39",
    "GUI DAMIANO"
+  ],
+  [
+   "2026-11-30T14:15:00Z",
+   "2026-11-30T17:15:00Z",
+   "WORKSHOP - SCRITTURA CREATIVA 1",
+   "ROOM 6 - Torino San Quintino 39",
+   "GIACOMELLI MARCO ENRICO"
   ],
   [
    "2026-12-01T09:00:00Z",
@@ -185,21 +434,21 @@
   [
    "2026-12-01T14:15:00Z",
    "2026-12-01T17:15:00Z",
-   "METODOLOGIA DELLA PROGETTAZIONE - UNITA' DIDATTICA 1",
+   "METODOLOGIA DELLA PROGETTAZIONE - UNITA' DIDATTICA  1",
    "ROOM 101 - Torino Nizza 18",
    "GUI DAMIANO"
   ],
   [
    "2026-12-02T10:00:00Z",
    "2026-12-02T14:00:00Z",
-   "METODOLOGIA DELLA PROGETTAZIONE - UNITA' DIDATTICA 2",
+   "METODOLOGIA DELLA PROGETTAZIONE - UNITA' DIDATTICA  2",
    "ROOM 403 - Torino Nizza 18",
    "ZORATTI CARLO"
   ],
   [
    "2026-12-02T14:00:00Z",
    "2026-12-02T17:00:00Z",
-   "METODOLOGIA DELLA PROGETTAZIONE - UNITA' DIDATTICA 2",
+   "METODOLOGIA DELLA PROGETTAZIONE - UNITA' DIDATTICA  2",
    "ROOM 403 - Torino Nizza 18",
    "ZORATTI CARLO"
   ],
@@ -234,7 +483,7 @@
   [
    "2026-12-09T10:45:00Z",
    "2026-12-09T13:45:00Z",
-   "METODOLOGIA DELLA PROGETTAZIONE - UNITA' DIDATTICA 1",
+   "METODOLOGIA DELLA PROGETTAZIONE - UNITA' DIDATTICA  1",
    "ROOM 7 - Torino San Quintino 39",
    "GUI DAMIANO"
   ],
@@ -267,6 +516,13 @@
    "GALLINA FILIPPO GIUSEPPE"
   ],
   [
+   "2026-12-14T10:45:00Z",
+   "2026-12-14T13:45:00Z",
+   "WORKSHOP - SCRITTURA CREATIVA 1",
+   "ROOM 3 - Torino San Quintino 39",
+   "GIACOMELLI MARCO ENRICO"
+  ],
+  [
    "2026-12-14T14:15:00Z",
    "2026-12-14T17:15:00Z",
    "GRAPHIC DESIGN - UNITA' DIDATTICA 1",
@@ -297,14 +553,14 @@
   [
    "2026-12-16T10:45:00Z",
    "2026-12-16T13:45:00Z",
-   "METODOLOGIA DELLA PROGETTAZIONE - UNITA' DIDATTICA 2",
+   "METODOLOGIA DELLA PROGETTAZIONE - UNITA' DIDATTICA  2",
    "ROOM 8 - Torino San Quintino 39",
    "ZORATTI CARLO"
   ],
   [
    "2026-12-16T14:15:00Z",
    "2026-12-16T17:15:00Z",
-   "METODOLOGIA DELLA PROGETTAZIONE - UNITA' DIDATTICA 2",
+   "METODOLOGIA DELLA PROGETTAZIONE - UNITA' DIDATTICA  2",
    "ROOM 8 - Torino San Quintino 39",
    "ZORATTI CARLO"
   ],
@@ -328,28 +584,699 @@
    "FONDAMENTI DI MARKETING CULTURALE",
    "ROOM 8 - Torino San Quintino 39",
    "GALLINA FILIPPO GIUSEPPE"
+  ],
+  [
+   "2026-12-20T23:00:00Z",
+   "2026-12-21T22:59:59Z",
+   "Vacanze di Natale",
+   "",
+   ""
+  ],
+  [
+   "2026-12-21T23:00:00Z",
+   "2026-12-22T22:59:59Z",
+   "Vacanze di Natale",
+   "",
+   ""
+  ],
+  [
+   "2026-12-22T23:00:00Z",
+   "2026-12-23T22:59:59Z",
+   "Vacanze di Natale",
+   "",
+   ""
+  ],
+  [
+   "2026-12-23T23:00:00Z",
+   "2026-12-24T22:59:59Z",
+   "Vacanze di Natale",
+   "",
+   ""
+  ],
+  [
+   "2026-12-24T23:00:00Z",
+   "2026-12-25T22:59:59Z",
+   "Vacanze di Natale",
+   "",
+   ""
+  ],
+  [
+   "2026-12-25T23:00:00Z",
+   "2026-12-26T22:59:59Z",
+   "Vacanze di Natale",
+   "",
+   ""
+  ],
+  [
+   "2026-12-27T23:00:00Z",
+   "2026-12-28T22:59:59Z",
+   "Vacanze di Natale",
+   "",
+   ""
+  ],
+  [
+   "2026-12-28T23:00:00Z",
+   "2026-12-29T22:59:59Z",
+   "Vacanze di Natale",
+   "",
+   ""
+  ],
+  [
+   "2026-12-29T23:00:00Z",
+   "2026-12-30T22:59:59Z",
+   "Vacanze di Natale",
+   "",
+   ""
+  ],
+  [
+   "2026-12-30T23:00:00Z",
+   "2026-12-31T22:59:59Z",
+   "Vacanze di Natale",
+   "",
+   ""
+  ],
+  [
+   "2026-12-31T23:00:00Z",
+   "2027-01-01T22:59:59Z",
+   "Vacanze di Natale",
+   "",
+   ""
+  ],
+  [
+   "2027-01-01T23:00:00Z",
+   "2027-01-02T22:59:59Z",
+   "Vacanze di Natale",
+   "",
+   ""
+  ],
+  [
+   "2027-01-03T23:00:00Z",
+   "2027-01-04T22:59:59Z",
+   "Vacanze di Natale",
+   "",
+   ""
+  ],
+  [
+   "2027-01-04T23:00:00Z",
+   "2027-01-05T22:59:59Z",
+   "Vacanze di Natale",
+   "",
+   ""
+  ],
+  [
+   "2027-01-05T23:00:00Z",
+   "2027-01-06T22:59:59Z",
+   "Epifania",
+   "",
+   ""
+  ],
+  [
+   "2027-01-07T07:30:00Z",
+   "2027-01-07T10:30:00Z",
+   "STORIA DELL'ARTE CONTEMPORANEA",
+   "ROOM 6 - Torino San Quintino 39",
+   "FOLLINI BERNARDO MARIA"
+  ],
+  [
+   "2027-01-07T10:45:00Z",
+   "2027-01-07T13:45:00Z",
+   "GRAPHIC DESIGN - UNITA' DIDATTICA 2",
+   "ROOM 9 - Torino San Quintino 39",
+   "CASTAGNOLA RUGGERO"
+  ],
+  [
+   "2027-01-08T10:45:00Z",
+   "2027-01-08T13:45:00Z",
+   "FONDAMENTI DI MARKETING CULTURALE",
+   "ROOM 8 - Torino San Quintino 39",
+   "GALLINA FILIPPO GIUSEPPE"
+  ],
+  [
+   "2027-01-08T14:15:00Z",
+   "2027-01-08T17:15:00Z",
+   "WORKSHOP - SCRITTURA CREATIVA 1",
+   "ROOM 1 - Torino San Quintino 39",
+   "GIACOMELLI MARCO ENRICO"
+  ],
+  [
+   "2027-01-11T10:45:00Z",
+   "2027-01-11T13:45:00Z",
+   "WORKSHOP - SCRITTURA CREATIVA 1",
+   "ROOM 3 - Torino San Quintino 39",
+   "GIACOMELLI MARCO ENRICO"
+  ],
+  [
+   "2027-01-11T14:15:00Z",
+   "2027-01-11T17:15:00Z",
+   "METODOLOGIA DELLA PROGETTAZIONE - UNITA' DIDATTICA  1",
+   "ROOM 6 - Torino San Quintino 39",
+   "GUI DAMIANO"
+  ],
+  [
+   "2027-01-12T07:30:00Z",
+   "2027-01-12T10:30:00Z",
+   "GRAPHIC DESIGN - UNITA' DIDATTICA 1",
+   "ROOM 304 - Torino Nizza 18",
+   "DA SILVA NICODEMOS LUIZA"
+  ],
+  [
+   "2027-01-12T10:45:00Z",
+   "2027-01-12T13:45:00Z",
+   "METODOLOGIA DELLA PROGETTAZIONE - UNITA' DIDATTICA  2",
+   "ROOM 304 - Torino Nizza 18",
+   "ZORATTI CARLO"
+  ],
+  [
+   "2027-01-13T10:45:00Z",
+   "2027-01-13T13:45:00Z",
+   "METODOLOGIA DELLA PROGETTAZIONE - UNITA' DIDATTICA  2",
+   "ROOM 304 - Torino Nizza 18",
+   "ZORATTI CARLO"
+  ],
+  [
+   "2027-01-14T10:45:00Z",
+   "2027-01-14T13:45:00Z",
+   "METODOLOGIA DELLA PROGETTAZIONE - UNITA' DIDATTICA  2",
+   "ROOM 304 - Torino Nizza 18",
+   "ZORATTI CARLO"
+  ],
+  [
+   "2027-01-14T14:15:00Z",
+   "2027-01-14T17:15:00Z",
+   "GRAPHIC DESIGN - UNITA' DIDATTICA 2",
+   "ROOM 101 - Torino Nizza 18",
+   "CASTAGNOLA RUGGERO"
+  ],
+  [
+   "2027-01-15T07:30:00Z",
+   "2027-01-15T10:30:00Z",
+   "STORIA DELL'ARTE CONTEMPORANEA",
+   "ROOM 9 - Torino San Quintino 39",
+   "FOLLINI BERNARDO MARIA"
+  ],
+  [
+   "2027-01-15T10:45:00Z",
+   "2027-01-15T13:45:00Z",
+   "FONDAMENTI DI MARKETING CULTURALE",
+   "ROOM 7 - Torino San Quintino 39",
+   "GALLINA FILIPPO GIUSEPPE"
+  ],
+  [
+   "2027-01-18T07:30:00Z",
+   "2027-01-18T09:30:00Z",
+   "WORKSHOP - SCRITTURA CREATIVA 1",
+   "ROOM 9 - Torino San Quintino 39",
+   "GIACOMELLI MARCO ENRICO"
+  ],
+  [
+   "2027-01-18T10:45:00Z",
+   "2027-01-18T13:45:00Z",
+   "METODOLOGIA DELLA PROGETTAZIONE - UNITA' DIDATTICA  1",
+   "ROOM 4 - Torino San Quintino 39",
+   "GUI DAMIANO"
+  ],
+  [
+   "2027-01-18T14:15:00Z",
+   "2027-01-18T17:15:00Z",
+   "GRAPHIC DESIGN - UNITA' DIDATTICA 1",
+   "ROOM 4 - Torino San Quintino 39",
+   "DA SILVA NICODEMOS LUIZA"
+  ],
+  [
+   "2027-01-19T10:45:00Z",
+   "2027-01-19T13:45:00Z",
+   "STORIA E TEORIA DEI NUOVI MEDIA",
+   "ROOM 402 (Schermi MAC) - Torino Nizza 18",
+   "BERNOCCHI ROBERTO"
+  ],
+  [
+   "2027-01-19T14:15:00Z",
+   "2027-01-19T17:15:00Z",
+   "STORIA DELL'ARTE CONTEMPORANEA",
+   "",
+   "FOLLINI BERNARDO MARIA NOTE: c/o Fondazione Sandretto Re Rebaudengo Via Modane 16"
+  ],
+  [
+   "2027-01-21T14:15:00Z",
+   "2027-01-21T17:15:00Z",
+   "GRAPHIC DESIGN - UNITA' DIDATTICA 2",
+   "ROOM 101 - Torino Nizza 18",
+   "CASTAGNOLA RUGGERO"
+  ],
+  [
+   "2027-01-22T07:30:00Z",
+   "2027-01-22T10:30:00Z",
+   "STORIA DELL'ARTE CONTEMPORANEA",
+   "ROOM 9 - Torino San Quintino 39",
+   "FOLLINI BERNARDO MARIA"
+  ],
+  [
+   "2027-01-22T10:45:00Z",
+   "2027-01-22T13:45:00Z",
+   "FONDAMENTI DI MARKETING CULTURALE",
+   "ROOM 8 - Torino San Quintino 39",
+   "GALLINA FILIPPO GIUSEPPE"
+  ],
+  [
+   "2027-01-25T10:45:00Z",
+   "2027-01-25T13:45:00Z",
+   "METODOLOGIA DELLA PROGETTAZIONE - UNITA' DIDATTICA  1",
+   "ROOM 101 - Torino Nizza 18",
+   "GUI DAMIANO"
+  ],
+  [
+   "2027-01-25T14:15:00Z",
+   "2027-01-25T17:15:00Z",
+   "GRAPHIC DESIGN - UNITA' DIDATTICA 1",
+   "ROOM 101 - Torino Nizza 18",
+   "DA SILVA NICODEMOS LUIZA"
+  ],
+  [
+   "2027-01-26T07:30:00Z",
+   "2027-01-26T10:30:00Z",
+   "METODOLOGIA DELLA PROGETTAZIONE - UNITA' DIDATTICA  1",
+   "ROOM 1 - Torino San Quintino 39",
+   "GUI DAMIANO"
+  ],
+  [
+   "2027-01-26T10:45:00Z",
+   "2027-01-26T13:45:00Z",
+   "STORIA E TEORIA DEI NUOVI MEDIA",
+   "ROOM 1 - Torino San Quintino 39",
+   "BERNOCCHI ROBERTO"
+  ],
+  [
+   "2027-01-27T07:30:00Z",
+   "2027-01-27T11:30:00Z",
+   "GRAPHIC DESIGN - UNITA' DIDATTICA 1",
+   "ROOM 105 - Torino Nizza 18",
+   "DA SILVA NICODEMOS LUIZA"
+  ],
+  [
+   "2027-01-28T10:45:00Z",
+   "2027-01-28T14:45:00Z",
+   "GRAPHIC DESIGN - UNITA' DIDATTICA 2",
+   "ROOM 105 - Torino Nizza 18",
+   "CASTAGNOLA RUGGERO"
+  ],
+  [
+   "2027-01-29T07:30:00Z",
+   "2027-01-29T10:30:00Z",
+   "STORIA DELL'ARTE CONTEMPORANEA",
+   "ROOM 2 - Torino San Quintino 39",
+   "FOLLINI BERNARDO MARIA"
+  ],
+  [
+   "2027-03-02T10:45:00Z",
+   "2027-03-02T13:45:00Z",
+   "COMPUTER GRAPHIC - UNITA' DIDATTICA 2",
+   "ROOM 8 - Torino San Quintino 39",
+   "CAGLIERO PAOLO"
+  ],
+  [
+   "2027-03-03T10:45:00Z",
+   "2027-03-03T13:45:00Z",
+   "COMPUTER GRAPHIC - UNITA' DIDATTICA 1",
+   "MAC LAB - Torino San Quintino 39",
+   "LAMPIS MARCO"
+  ],
+  [
+   "2027-03-04T10:45:00Z",
+   "2027-03-04T13:45:00Z",
+   "METODOLOGIA PROGETTUALE DELLA COMUNICAZIONE VISIVA 1 - UNITA' DIDATTICA 1",
+   "ROOM 304 - Torino Nizza 18",
+   "PACIULLO PIETRO"
+  ],
+  [
+   "2027-03-04T14:15:00Z",
+   "2027-03-04T17:15:00Z",
+   "METODOLOGIA PROGETTUALE DELLA COMUNICAZIONE VISIVA 1 - UNITA' DIDATTICA 2",
+   "ROOM 304 - Torino Nizza 18",
+   "DE STEFANO GABRIELLA"
+  ],
+  [
+   "2027-03-05T10:45:00Z",
+   "2027-03-05T13:45:00Z",
+   "FONDAMENTI DI MARKETING CULTURALE",
+   "ROOM 8 - Torino San Quintino 39",
+   "GALLINA FILIPPO GIUSEPPE"
+  ],
+  [
+   "2027-03-09T10:45:00Z",
+   "2027-03-09T13:45:00Z",
+   "COMPUTER GRAPHIC - UNITA' DIDATTICA 2",
+   "ROOM 301 - Torino Nizza 18",
+   "CAGLIERO PAOLO"
+  ],
+  [
+   "2027-03-10T10:45:00Z",
+   "2027-03-10T13:45:00Z",
+   "COMPUTER GRAPHIC - UNITA' DIDATTICA 1",
+   "MAC LAB - Torino San Quintino 39",
+   "LAMPIS MARCO"
+  ],
+  [
+   "2027-03-10T14:15:00Z",
+   "2027-03-10T17:15:00Z",
+   "SEMIOTICA DELL'ARTE",
+   "AULA MAGNA - Torino San Quintino 39",
+   "TENAGLIA FRANCESCO"
+  ],
+  [
+   "2027-03-11T10:45:00Z",
+   "2027-03-11T13:45:00Z",
+   "METODOLOGIA PROGETTUALE DELLA COMUNICAZIONE VISIVA 1 - UNITA' DIDATTICA 1",
+   "ROOM 304 - Torino Nizza 18",
+   "PACIULLO PIETRO"
+  ],
+  [
+   "2027-03-11T14:15:00Z",
+   "2027-03-11T17:15:00Z",
+   "METODOLOGIA PROGETTUALE DELLA COMUNICAZIONE VISIVA 1 - UNITA' DIDATTICA 2",
+   "ROOM 304 - Torino Nizza 18",
+   "DE STEFANO GABRIELLA"
+  ],
+  [
+   "2027-03-12T10:45:00Z",
+   "2027-03-12T13:45:00Z",
+   "FONDAMENTI DI MARKETING CULTURALE",
+   "ROOM 8 - Torino San Quintino 39",
+   "GALLINA FILIPPO GIUSEPPE"
+  ],
+  [
+   "2027-03-16T10:45:00Z",
+   "2027-03-16T13:45:00Z",
+   "COMPUTER GRAPHIC - UNITA' DIDATTICA 2",
+   "ROOM 301 - Torino Nizza 18",
+   "CAGLIERO PAOLO"
+  ],
+  [
+   "2027-03-17T10:45:00Z",
+   "2027-03-17T13:45:00Z",
+   "COMPUTER GRAPHIC - UNITA' DIDATTICA 1",
+   "MAC LAB - Torino San Quintino 39",
+   "LAMPIS MARCO"
+  ],
+  [
+   "2027-03-18T10:45:00Z",
+   "2027-03-18T13:45:00Z",
+   "METODOLOGIA PROGETTUALE DELLA COMUNICAZIONE VISIVA 1 - UNITA' DIDATTICA 1",
+   "ROOM 304 - Torino Nizza 18",
+   "PACIULLO PIETRO"
+  ],
+  [
+   "2027-03-18T14:15:00Z",
+   "2027-03-18T17:15:00Z",
+   "METODOLOGIA PROGETTUALE DELLA COMUNICAZIONE VISIVA 1 - UNITA' DIDATTICA 2",
+   "ROOM 304 - Torino Nizza 18",
+   "DE STEFANO GABRIELLA"
+  ],
+  [
+   "2027-03-19T10:45:00Z",
+   "2027-03-19T13:45:00Z",
+   "FONDAMENTI DI MARKETING CULTURALE",
+   "ROOM 8 - Torino San Quintino 39",
+   "GALLINA FILIPPO GIUSEPPE"
+  ],
+  [
+   "2027-03-23T10:45:00Z",
+   "2027-03-23T13:45:00Z",
+   "COMPUTER GRAPHIC - UNITA' DIDATTICA 2",
+   "ROOM 8 - Torino San Quintino 39",
+   "CAGLIERO PAOLO"
+  ],
+  [
+   "2027-03-24T10:45:00Z",
+   "2027-03-24T13:45:00Z",
+   "COMPUTER GRAPHIC - UNITA' DIDATTICA 1",
+   "MAC LAB - Torino San Quintino 39",
+   "LAMPIS MARCO"
+  ],
+  [
+   "2027-03-24T14:15:00Z",
+   "2027-03-24T17:15:00Z",
+   "SEMIOTICA DELL'ARTE",
+   "AULA MAGNA - Torino San Quintino 39",
+   "TENAGLIA FRANCESCO"
+  ],
+  [
+   "2027-03-25T10:45:00Z",
+   "2027-03-25T13:45:00Z",
+   "METODOLOGIA PROGETTUALE DELLA COMUNICAZIONE VISIVA 1 - UNITA' DIDATTICA 1",
+   "ROOM 304 - Torino Nizza 18",
+   "PACIULLO PIETRO"
+  ],
+  [
+   "2027-03-25T14:15:00Z",
+   "2027-03-25T17:15:00Z",
+   "METODOLOGIA PROGETTUALE DELLA COMUNICAZIONE VISIVA 1 - UNITA' DIDATTICA 2",
+   "ROOM 304 - Torino Nizza 18",
+   "DE STEFANO GABRIELLA"
+  ],
+  [
+   "2027-03-25T23:00:00Z",
+   "2027-03-26T22:59:59Z",
+   "Venerdi Santo",
+   "",
+   ""
+  ],
+  [
+   "2027-03-26T23:00:00Z",
+   "2027-03-27T22:59:59Z",
+   "FESTIVITA' PASQUALI",
+   "",
+   ""
+  ],
+  [
+   "2027-03-27T23:00:00Z",
+   "2027-03-28T21:59:59Z",
+   "Pasqua",
+   "",
+   ""
+  ],
+  [
+   "2027-03-28T22:00:00Z",
+   "2027-03-29T21:59:59Z",
+   "Lunedì di Pasquetta",
+   "",
+   ""
+  ],
+  [
+   "2027-03-29T22:00:00Z",
+   "2027-03-30T21:59:59Z",
+   "FESTIVITA' PASQUALI",
+   "",
+   ""
+  ],
+  [
+   "2027-03-31T09:45:00Z",
+   "2027-03-31T12:45:00Z",
+   "COMPUTER GRAPHIC - UNITA' DIDATTICA 1",
+   "MAC LAB - Torino San Quintino 39",
+   "LAMPIS MARCO"
+  ],
+  [
+   "2027-03-31T13:15:00Z",
+   "2027-03-31T16:15:00Z",
+   "SEMIOTICA DELL'ARTE",
+   "AULA MAGNA - Torino San Quintino 39",
+   "TENAGLIA FRANCESCO"
+  ],
+  [
+   "2027-04-01T09:45:00Z",
+   "2027-04-01T12:45:00Z",
+   "METODOLOGIA PROGETTUALE DELLA COMUNICAZIONE VISIVA 1 - UNITA' DIDATTICA 1",
+   "ROOM 304 - Torino Nizza 18",
+   "PACIULLO PIETRO"
+  ],
+  [
+   "2027-04-01T13:15:00Z",
+   "2027-04-01T16:15:00Z",
+   "METODOLOGIA PROGETTUALE DELLA COMUNICAZIONE VISIVA 1 - UNITA' DIDATTICA 2",
+   "ROOM 304 - Torino Nizza 18",
+   "DE STEFANO GABRIELLA"
+  ],
+  [
+   "2027-04-02T09:45:00Z",
+   "2027-04-02T12:45:00Z",
+   "FONDAMENTI DI MARKETING CULTURALE",
+   "ROOM 8 - Torino San Quintino 39",
+   "GALLINA FILIPPO GIUSEPPE"
+  ],
+  [
+   "2027-04-06T09:45:00Z",
+   "2027-04-06T12:45:00Z",
+   "COMPUTER GRAPHIC - UNITA' DIDATTICA 2",
+   "ROOM 301 - Torino Nizza 18",
+   "CAGLIERO PAOLO"
+  ],
+  [
+   "2027-04-07T09:45:00Z",
+   "2027-04-07T12:45:00Z",
+   "COMPUTER GRAPHIC - UNITA' DIDATTICA 1",
+   "MAC LAB - Torino San Quintino 39",
+   "LAMPIS MARCO"
+  ],
+  [
+   "2027-04-07T13:15:00Z",
+   "2027-04-07T16:15:00Z",
+   "SEMIOTICA DELL'ARTE",
+   "AULA MAGNA - Torino San Quintino 39",
+   "TENAGLIA FRANCESCO"
+  ],
+  [
+   "2027-04-08T09:45:00Z",
+   "2027-04-08T12:45:00Z",
+   "METODOLOGIA PROGETTUALE DELLA COMUNICAZIONE VISIVA 1 - UNITA' DIDATTICA 1",
+   "ROOM 403 - Torino Nizza 18",
+   "PACIULLO PIETRO"
+  ],
+  [
+   "2027-04-08T13:15:00Z",
+   "2027-04-08T16:15:00Z",
+   "METODOLOGIA PROGETTUALE DELLA COMUNICAZIONE VISIVA 1 - UNITA' DIDATTICA 2",
+   "ROOM 304 - Torino Nizza 18",
+   "DE STEFANO GABRIELLA"
+  ],
+  [
+   "2027-04-09T09:45:00Z",
+   "2027-04-09T12:45:00Z",
+   "FONDAMENTI DI MARKETING CULTURALE",
+   "ROOM 8 - Torino San Quintino 39",
+   "GALLINA FILIPPO GIUSEPPE"
+  ],
+  [
+   "2027-04-13T09:45:00Z",
+   "2027-04-13T12:45:00Z",
+   "COMPUTER GRAPHIC - UNITA' DIDATTICA 2",
+   "ROOM 301 - Torino Nizza 18",
+   "CAGLIERO PAOLO"
+  ],
+  [
+   "2027-04-14T09:45:00Z",
+   "2027-04-14T12:45:00Z",
+   "COMPUTER GRAPHIC - UNITA' DIDATTICA 1",
+   "MAC LAB - Torino San Quintino 39",
+   "LAMPIS MARCO"
+  ],
+  [
+   "2027-04-14T13:15:00Z",
+   "2027-04-14T16:15:00Z",
+   "SEMIOTICA DELL'ARTE",
+   "AULA MAGNA - Torino San Quintino 39",
+   "TENAGLIA FRANCESCO"
+  ],
+  [
+   "2027-04-15T09:45:00Z",
+   "2027-04-15T12:45:00Z",
+   "METODOLOGIA PROGETTUALE DELLA COMUNICAZIONE VISIVA 1 - UNITA' DIDATTICA 1",
+   "ROOM 304 - Torino Nizza 18",
+   "PACIULLO PIETRO"
+  ],
+  [
+   "2027-04-15T13:15:00Z",
+   "2027-04-15T16:15:00Z",
+   "METODOLOGIA PROGETTUALE DELLA COMUNICAZIONE VISIVA 1 - UNITA' DIDATTICA 2",
+   "ROOM 304 - Torino Nizza 18",
+   "DE STEFANO GABRIELLA"
+  ],
+  [
+   "2027-04-16T09:45:00Z",
+   "2027-04-16T12:45:00Z",
+   "FONDAMENTI DI MARKETING CULTURALE",
+   "ROOM 6 - Torino San Quintino 39",
+   "GALLINA FILIPPO GIUSEPPE"
+  ],
+  [
+   "2027-04-20T09:45:00Z",
+   "2027-04-20T12:45:00Z",
+   "COMPUTER GRAPHIC - UNITA' DIDATTICA 2",
+   "ROOM 301 - Torino Nizza 18",
+   "CAGLIERO PAOLO"
+  ],
+  [
+   "2027-04-21T09:45:00Z",
+   "2027-04-21T12:45:00Z",
+   "COMPUTER GRAPHIC - UNITA' DIDATTICA 1",
+   "MAC LAB - Torino San Quintino 39",
+   "LAMPIS MARCO"
+  ],
+  [
+   "2027-04-21T13:15:00Z",
+   "2027-04-21T16:15:00Z",
+   "SEMIOTICA DELL'ARTE",
+   "AULA MAGNA - Torino San Quintino 39",
+   "TENAGLIA FRANCESCO"
+  ],
+  [
+   "2027-04-23T09:45:00Z",
+   "2027-04-23T12:45:00Z",
+   "METODOLOGIA PROGETTUALE DELLA COMUNICAZIONE VISIVA 1 - UNITA' DIDATTICA 1",
+   "ROOM 304 - Torino Nizza 18",
+   "PACIULLO PIETRO"
+  ],
+  [
+   "2027-04-23T13:15:00Z",
+   "2027-04-23T16:15:00Z",
+   "METODOLOGIA PROGETTUALE DELLA COMUNICAZIONE VISIVA 1 - UNITA' DIDATTICA 2",
+   "ROOM 304 - Torino Nizza 18",
+   "DE STEFANO GABRIELLA"
   ]
  ],
- "deadlines": [],
- "news": [
+ "deadlines": [
   {
-   "date": "2026-11-26",
-   "title": "Esempio: cambio aula per Graphic Design",
-   "text": "Così apparirà un avviso arrivato dalla mail istituzionale. Gli avvisi veri arrivano qui ogni ora quando colleghiamo Gmail.",
-   "source": "Mail",
-   "important": true,
-   "example": true
-  },
-  {
-   "date": "2026-11-25",
-   "title": "Esempio: nuovi materiali su Moodle",
-   "text": "Quando un docente carica un file, compare qui con la materia e il link diretto.",
-   "source": "Moodle",
-   "important": false,
-   "example": true
+   "title": "Scrittura creativa: consegna LAB2",
+   "date": "2026-11-29T20:00:00.000+01:00",
+   "type": "Consegna",
+   "url": null,
+   "note": "Un solo file, chiamato Cognome_LAB2 (.doc, .docx, .rtf, .pdf, .pages o .odt).\n1. Esercitazione 1 rivista: correggi ortografia e punteggiatura seguendo i commenti al testo di Arianna letto a inizio lezione 2.\n2. Qualche riga vuota o un'interruzione di pagina.\n3. Esercitazione 2: scheda del protagonista (identikit, desiderio, difetto, segreto) + un testo di circa 1500 battute.\nRegole del testo: scena quotidiana e ordinaria; non nominare mai desiderio, difetto o segreto; niente aggettivi psicologici (ansioso, triste, arrabbiato...); quello che fai emergere dell'iceberg deve uscire senza spiegoni, attraverso gli oggetti che il protagonista tocca, evita o tiene in mano e quello che guarda o evita di guardare. Meglio evitare dialoghi e soliloqui.",
+   "subject": "Seminari interdisciplinari"
   }
  ],
+ "news": [],
  "docs": [
+  {
+   "name": "Modulo richiesta certificati",
+   "cat": "Modulo",
+   "ver": "MOD 8558 Rev. 1",
+   "note": "Per certificati di iscrizione, esami e altro. Serve una marca da bollo per ogni certificato, salvo quelli esenti.",
+   "url": "https://fullgasdescom1.github.io/hubclasse/files/modulo-richiesta-certificati.pdf"
+  },
+  {
+   "name": "Modulo di giustificazione assenza straordinaria",
+   "cat": "Modulo",
+   "ver": "Modulo IED",
+   "note": "Per chi supera il limite di assenze per gravi motivi. Si compila, si allegano i documenti e si consegna in segreteria didattica.",
+   "url": "https://fullgasdescom1.github.io/hubclasse/files/modulo-giustificazione-assenza.pdf"
+  },
+  {
+   "name": "Handbook Design della Comunicazione 2026",
+   "cat": "Handbook",
+   "ver": "A.A. 2026/27",
+   "note": "Piano di studi, schede degli insegnamenti, propedeuticità.",
+   "url": null
+  },
+  {
+   "name": "Appendice amministrativa",
+   "cat": "Regolamento",
+   "ver": "REG 8203, rev. 7 (allegato)",
+   "note": "Importi e scadenze amministrative.",
+   "url": null
+  },
+  {
+   "name": "Regolamento disciplinare",
+   "cat": "Regolamento",
+   "ver": "REG 8205, rev. 2",
+   "note": "Norme di comportamento, segnalazioni, procedure.",
+   "url": null
+  },
+  {
+   "name": "Presentazione primo anno DAPL",
+   "cat": "Presentazione",
+   "ver": "A.A. 2026/27",
+   "note": "",
+   "url": null
+  },
   {
    "name": "Regolamento didattico del triennio",
    "cat": "Regolamento",
@@ -363,61 +1290,33 @@
    "ver": "REG 8203, rev. 7",
    "note": "Iscrizione, pagamenti, rinunce.",
    "url": null
-  },
-  {
-   "name": "Appendice amministrativa",
-   "cat": "Regolamento",
-   "ver": "Allegato al REG 8203",
-   "note": "Importi e scadenze amministrative.",
-   "url": null
-  },
-  {
-   "name": "Regolamento disciplinare",
-   "cat": "Regolamento",
-   "ver": "REG 8205, rev. 2",
-   "note": "Norme di comportamento, segnalazioni, procedure.",
-   "url": null
-  },
-  {
-   "name": "Handbook Design della Comunicazione",
-   "cat": "Handbook",
-   "ver": "A.A. 2026/27",
-   "note": "Piano di studi, schede degli insegnamenti, propedeuticità.",
-   "url": null
-  },
-  {
-   "name": "Presentazione primo anno",
-   "cat": "Presentazione",
-   "ver": "A.A. 2026/27",
-   "note": "Le slide dell'incontro di inizio anno.",
-   "url": null
   }
  ],
  "faq": [
   {
-   "q": "Quante assenze si possono fare?",
-   "a": "La frequenza è obbligatoria per l'80% delle ore di ogni insegnamento. Oltre la soglia, per gravi motivi, si presenta il modulo in segreteria didattica e decide il Coordinatore Accademico.",
-   "src": "Regolamento didattico, art. 5.7 e 5.8"
-  },
-  {
-   "q": "Quando si supera un esame?",
-   "a": "Con almeno 18/30 o un'idoneità. Se sei assente per un motivo grave, serve una domanda scritta con documenti entro 7 giorni di calendario dall'esame.",
-   "src": "Regolamento didattico, art. 18.12 e 18.9"
-  },
-  {
    "q": "Quanti crediti servono per il secondo anno?",
-   "a": "40 crediti.",
+   "a": "40 CFA.",
    "src": "Regolamento didattico, art. 22.1"
   },
   {
+   "q": "Quante assenze si possono fare?",
+   "a": "La frequenza è obbligatoria per l'80% delle ore di ogni insegnamento. Oltre la soglia, per gravi motivi, compili il modulo di giustificazione assenza straordinaria (lo trovi tra i Documenti e nel riquadro Assenze), alleghi i documenti e lo consegni in segreteria didattica. Decide il Coordinatore Accademico.",
+   "src": "Regolamento didattico, art. 5.7 e 5.8"
+  },
+  {
    "q": "Come si chiede un certificato?",
-   "a": "Iscrizione e frequenza si chiedono alla segreteria. Le autocertificazioni si stampano da IED Campus, area Segreteria.",
+   "a": "Le autocertificazioni si stampano da IED Campus, area Segreteria. Per i certificati ufficiali (iscrizione, esami, borse di studio) compili il modulo richiesta certificati, che trovi tra i Documenti, e lo consegni in segreteria: serve una marca da bollo per ogni certificato, tranne quelli esenti.",
    "src": "Regolamento didattico, art. 3.1 e 3.2"
   },
   {
    "q": "Dove arrivano le comunicazioni ufficiali?",
    "a": "Sulla casella email istituzionale, da controllare regolarmente.",
    "src": "Regolamento generale, art. 21.1"
+  },
+  {
+   "q": "Quando si supera un esame?",
+   "a": "Con almeno 18/30 o un'idoneità. Se si è assenti per un motivo grave, serve una domanda scritta con documenti entro 7 giorni di calendario dall'esame.",
+   "src": "Regolamento didattico, art. 18.12 e 18.9"
   }
  ],
  "contacts": [
